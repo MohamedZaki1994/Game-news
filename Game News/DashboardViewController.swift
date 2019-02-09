@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class DashboardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var container: UIView!
     let count = 3
+    let imageArray = ["Silkroad","LOL","Pubg"]
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return count
     }
@@ -24,10 +25,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return cell
         }
         wrappedcell.title.text = "hello\(indexPath.row)"
+        wrappedcell.imageView.image = UIImage(named: imageArray[indexPath.row])
         return wrappedcell
-    }
-    
-    @IBAction func btn(_ sender: Any) {
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,11 +39,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         view.addSubview(topBarVC.view)
         topBarVC.didMove(toParent: self)
         view.sendSubviewToBack(topBarVC.view)
-
+        _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         rep.data()
            }
     override func viewDidLayoutSubviews() {
-        _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
     @objc func timerAction() {
         DispatchQueue.main.async {
@@ -82,4 +80,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
 }
+extension DashboardViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+}
+
 
