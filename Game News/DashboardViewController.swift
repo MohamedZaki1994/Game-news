@@ -50,8 +50,10 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 print(self.row)
                 self.view.layoutIfNeeded()
                 self.row += 1
+                self.lastContentOffsetX += self.collectionView.frame.width
                 if self.row == self.count {
                     self.row = 0
+                    self.lastContentOffsetX = 0.0
                 }
                 self.pageController.currentPage = self.row
                 let index = IndexPath(row: self.row, section: 0)
@@ -63,20 +65,23 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         
     }
+    var lastContentOffsetX: CGFloat = 0.0
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x > 0.0 {
+        // moving to the right
+        if scrollView.contentOffset.x - lastContentOffsetX > 0.0 {
         pageController.currentPage = row + 1
             row += 1
             if row == 3 {
                 row = 0
             }
-        } else {
+        } else if scrollView.contentOffset.x - lastContentOffsetX < 0.0 {
             pageController.currentPage = row - 1
             row -= 1
             if row == -1 {
                 row = 0
             }
         }
+        lastContentOffsetX = scrollView.contentOffset.x
     }
 
 }
