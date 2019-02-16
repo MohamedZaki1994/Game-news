@@ -29,7 +29,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         wrappedcell.imageView.image = UIImage(named: imageArray[indexPath.row])
         return wrappedcell
     }
-    
+    let label = UILabel(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
     @IBOutlet weak var collectionView: UICollectionView!
     var row = 0
     override func viewDidLoad() {
@@ -43,6 +43,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         rep.data()
         setupStackView()
+        label.text = "Fire"
+        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        view.addSubview(label)
            }
     @objc func timerAction() {
         DispatchQueue.main.async {
@@ -83,16 +86,21 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         lastContentOffsetX = scrollView.contentOffset.x
     }
+    var viewHeightCollapsed: NSLayoutConstraint?
+    var viewHeightExtended: NSLayoutConstraint?
     func setupStackView() {
         for imj in imageArray {
             let image = UIImage(named: imj)
             let imageView = UIImageView(image: image)
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            let view = UIView()
+            let view = CustomView()
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            view.viewHeightCollapsed = view.heightAnchor.constraint(equalToConstant: 100)
+                view.viewHeightCollapsed?.isActive = true
             view.addSubview(imageView)
-            let tap = UITapGestureRecognizer(target: self, action: #selector(handleAction))
+            let tap = UITAPGesture(target: self, action: #selector(handleAction))
+            tap.tapedView = view
+            tap.isOpened = false
             stackView.addArrangedSubview(view)
             imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
             imageView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
@@ -100,7 +108,19 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             imageView.addGestureRecognizer(tap)
         }
     }
-    @objc func handleAction() {
+    @objc func handleAction(sender: UITAPGesture) {
+        guard let tapedView = sender.tapedView,
+        let isOpened = sender.isOpened else {return}
+        if isOpened {
+            tapedView.viewHeightExtended?.isActive = false
+            tapedView.viewHeightCollapsed?.isActive = true //tapedView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            sender.isOpened = false
+        } else {
+            tapedView.viewHeightCollapsed?.isActive = false
+            tapedView.viewHeightExtended = tapedView.heightAnchor.constraint(equalToConstant: 200)
+                tapedView.viewHeightExtended?.isActive = true
+            sender.isOpened = true
+        }
         print("welcome")
     }
 
@@ -109,4 +129,14 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
+}
+
+class UITAPGesture: UITapGestureRecognizer {
+    var tapedView: CustomView?
+    var isOpened: Bool?
+}
+
+class CustomView: UIView {
+    var viewHeightCollapsed: NSLayoutConstraint?
+    var viewHeightExtended: NSLayoutConstraint?
 }
