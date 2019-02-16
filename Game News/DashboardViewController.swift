@@ -93,17 +93,30 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             let image = UIImage(named: imj)
             let imageView = UIImageView(image: image)
             imageView.translatesAutoresizingMaskIntoConstraints = false
+            let label = UILabel()
+            label.text = "Test"
+            label.translatesAutoresizingMaskIntoConstraints = false
             let view = CustomView()
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.viewHeightCollapsed = view.heightAnchor.constraint(equalToConstant: 100)
+            view.viewHeightCollapsed = view.heightAnchor.constraint(equalToConstant: 120)
                 view.viewHeightCollapsed?.isActive = true
+            view.more = label
             view.addSubview(imageView)
+            view.addSubview(label)
+            label.textColor = .red
+            label.numberOfLines = 0
+            label.text = "See more"
+            label.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+            label.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
+            label.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
+            label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
             let tap = UITAPGesture(target: self, action: #selector(handleAction))
             tap.tapedView = view
             tap.isOpened = false
             stackView.addArrangedSubview(view)
             imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-            imageView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+            imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             imageView.isUserInteractionEnabled = true
             imageView.addGestureRecognizer(tap)
         }
@@ -112,14 +125,23 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         guard let tapedView = sender.tapedView,
         let isOpened = sender.isOpened else {return}
         if isOpened {
-            tapedView.viewHeightExtended?.isActive = false
-            tapedView.viewHeightCollapsed?.isActive = true //tapedView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-            sender.isOpened = false
+            UIView.animate(withDuration: 1) {
+                tapedView.more?.text = "See more"
+                tapedView.viewHeightExtended?.isActive = false
+                tapedView.viewHeightCollapsed?.isActive = true //tapedView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+                sender.isOpened = false
+                self.view.layoutIfNeeded()
+            }
         } else {
-            tapedView.viewHeightCollapsed?.isActive = false
-            tapedView.viewHeightExtended = tapedView.heightAnchor.constraint(equalToConstant: 200)
+            UIView.animate(withDuration: 1) {
+                tapedView.more?.text = "here you are so you can go to this direction and try to find me"
+                tapedView.viewHeightCollapsed?.isActive = false
+                tapedView.viewHeightExtended = tapedView.heightAnchor.constraint(equalToConstant: 200)
                 tapedView.viewHeightExtended?.isActive = true
-            sender.isOpened = true
+                sender.isOpened = true
+                self.view.layoutIfNeeded()
+            }
+            
         }
         print("welcome")
     }
@@ -139,4 +161,5 @@ class UITAPGesture: UITapGestureRecognizer {
 class CustomView: UIView {
     var viewHeightCollapsed: NSLayoutConstraint?
     var viewHeightExtended: NSLayoutConstraint?
+    var more: UILabel?
 }
