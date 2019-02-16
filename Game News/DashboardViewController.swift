@@ -10,6 +10,7 @@ import UIKit
 
 class DashboardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var container: UIView!
     let count = 3
     let imageArray = ["Silkroad","LOL","Pubg"]
@@ -41,9 +42,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         view.sendSubviewToBack(topBarVC.view)
         _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         rep.data()
+        setupStackView()
            }
-    override func viewDidLayoutSubviews() {
-    }
     @objc func timerAction() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, animations: {
@@ -83,6 +83,26 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         lastContentOffsetX = scrollView.contentOffset.x
     }
+    func setupStackView() {
+        for imj in imageArray {
+            let image = UIImage(named: imj)
+            let imageView = UIImageView(image: image)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            view.addSubview(imageView)
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleAction))
+            stackView.addArrangedSubview(view)
+            imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+            imageView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+            imageView.isUserInteractionEnabled = true
+            imageView.addGestureRecognizer(tap)
+        }
+    }
+    @objc func handleAction() {
+        print("welcome")
+    }
 
 }
 extension DashboardViewController: UICollectionViewDelegateFlowLayout {
@@ -90,5 +110,3 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 }
-
-

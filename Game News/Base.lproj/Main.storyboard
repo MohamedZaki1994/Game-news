@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BP3-5u-pg1">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BP3-5u-pg1">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWw-aB-RUJ">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWw-aB-RUJ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ei-y0-sTP">
@@ -96,15 +96,21 @@
                                                     <constraint firstAttribute="height" constant="37" id="g7g-c2-yVd"/>
                                                 </constraints>
                                             </pageControl>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ovl-gm-d3c">
+                                                <rect key="frame" x="20" y="327" width="335" height="200"/>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="0ei-y0-sTP" firstAttribute="top" secondItem="gWw-aB-RUJ" secondAttribute="top" constant="20" id="1US-yS-grB"/>
                                             <constraint firstItem="I1n-t2-MrJ" firstAttribute="centerX" secondItem="0ei-y0-sTP" secondAttribute="centerX" id="4Yr-6s-UU0"/>
                                             <constraint firstItem="0ei-y0-sTP" firstAttribute="leading" secondItem="gWw-aB-RUJ" secondAttribute="leading" constant="20" id="Fnr-X1-7sI"/>
-                                            <constraint firstAttribute="bottom" secondItem="I1n-t2-MrJ" secondAttribute="bottom" constant="310" id="HAi-Lw-xy1"/>
                                             <constraint firstAttribute="trailing" secondItem="0ei-y0-sTP" secondAttribute="trailing" constant="20" id="I1p-6M-JiA"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ovl-gm-d3c" secondAttribute="bottom" constant="90" id="SKZ-W7-vcO"/>
                                             <constraint firstItem="I1n-t2-MrJ" firstAttribute="top" secondItem="0ei-y0-sTP" secondAttribute="bottom" constant="20" id="UFP-Wj-93H"/>
+                                            <constraint firstItem="Ovl-gm-d3c" firstAttribute="top" secondItem="I1n-t2-MrJ" secondAttribute="bottom" constant="20" id="hNw-WU-W8q"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ovl-gm-d3c" secondAttribute="trailing" constant="20" id="qJW-hv-nYa"/>
+                                            <constraint firstItem="Ovl-gm-d3c" firstAttribute="leading" secondItem="gWw-aB-RUJ" secondAttribute="leading" constant="20" id="qck-L0-8Ke"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -129,6 +135,7 @@
                     <connections>
                         <outlet property="collectionView" destination="0ei-y0-sTP" id="tUC-Yb-3zy"/>
                         <outlet property="pageController" destination="I1n-t2-MrJ" id="KIG-nE-lwv"/>
+                        <outlet property="stackView" destination="Ovl-gm-d3c" id="TPN-ky-7yk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
