@@ -10,6 +10,7 @@ import UIKit
 
 class DashboardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var container: UIView!
     let count = 3
@@ -29,7 +30,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         wrappedcell.imageView.image = UIImage(named: imageArray[indexPath.row])
         return wrappedcell
     }
-    let label = UILabel(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
     @IBOutlet weak var collectionView: UICollectionView!
     var row = 0
     override func viewDidLoad() {
@@ -37,16 +37,17 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         let storyboard =  UIStoryboard(name: "Main", bundle: nil)
         let topBarVC = storyboard.instantiateViewController(withIdentifier: "TopBarViewController")
         addChild(topBarVC)
+        topBarVC.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         view.addSubview(topBarVC.view)
         topBarVC.didMove(toParent: self)
-        view.sendSubviewToBack(topBarVC.view)
         _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         rep.data()
         setupStackView()
-        label.text = "Fire"
-        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        view.addSubview(label)
-           }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     @objc func timerAction() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, animations: {
@@ -125,7 +126,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         guard let tapedView = sender.tapedView,
         let isOpened = sender.isOpened else {return}
         if isOpened {
+            tapedView.more?.alpha = 0.25
             UIView.animate(withDuration: 1) {
+                tapedView.more?.alpha = 1
                 tapedView.more?.text = "See more"
                 tapedView.viewHeightExtended?.isActive = false
                 tapedView.viewHeightCollapsed?.isActive = true //tapedView.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -133,7 +136,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 self.view.layoutIfNeeded()
             }
         } else {
+            tapedView.more?.alpha = 0.25
             UIView.animate(withDuration: 1) {
+                tapedView.more?.alpha = 1
                 tapedView.more?.text = "here you are so you can go to this direction and try to find me"
                 tapedView.viewHeightCollapsed?.isActive = false
                 tapedView.viewHeightExtended = tapedView.heightAnchor.constraint(equalToConstant: 200)
@@ -143,9 +148,14 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             }
             
         }
-        print("welcome")
     }
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailedViewController") as? DetailedViewController else {
+            return
+            
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 extension DashboardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
