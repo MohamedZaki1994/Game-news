@@ -15,12 +15,6 @@ class DetailedViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let storyboard =  UIStoryboard(name: "Main", bundle: nil)
-        let topBarVC = storyboard.instantiateViewController(withIdentifier: "TopBarViewController")
-        addChild(topBarVC)
-        topBarVC.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
-        view.addSubview(topBarVC.view)
-        topBarVC.didMove(toParent: self)
     }
     
 

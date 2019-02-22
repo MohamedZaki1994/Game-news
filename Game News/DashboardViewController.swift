@@ -14,6 +14,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var container: UIView!
     let count = 3
+    var row = 0
+    var lastContentOffsetX: CGFloat = 0.0
+
     let imageArray = ["Silkroad","LOL","Pubg"]
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return count
@@ -31,7 +34,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         return wrappedcell
     }
     @IBOutlet weak var collectionView: UICollectionView!
-    var row = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         let storyboard =  UIStoryboard(name: "Main", bundle: nil)
@@ -48,6 +50,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+
     @objc func timerAction() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, animations: {
@@ -69,7 +72,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         
     }
-    var lastContentOffsetX: CGFloat = 0.0
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // moving to the right
         if scrollView.contentOffset.x - lastContentOffsetX > 0.0 {
@@ -154,22 +156,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             return
             
         }
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.pushViewController(viewController: vc)
     }
-}
-extension DashboardViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-    }
-}
-
-class UITAPGesture: UITapGestureRecognizer {
-    var tapedView: CustomView?
-    var isOpened: Bool?
-}
-
-class CustomView: UIView {
-    var viewHeightCollapsed: NSLayoutConstraint?
-    var viewHeightExtended: NSLayoutConstraint?
-    var more: UILabel?
 }

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		35E358B8220EE7230012D97E /* TopBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E358B7220EE7230012D97E /* TopBarViewController.swift */; };
 		35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E585772220617F00E9A4D3 /* DetailedViewController.swift */; };
+		35E5857B22206AAA00E9A4D3 /* UITAPGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857A22206AAA00E9A4D3 /* UITAPGesture.swift */; };
+		35E5857E22206AFB00E9A4D3 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857D22206AFB00E9A4D3 /* CustomView.swift */; };
+		35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */; };
+		35E5858222206BD200E9A4D3 /* RootNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5858122206BD200E9A4D3 /* RootNavigation.swift */; };
 		35EB12ED220DC45800D91BD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB12EC220DC45800D91BD6 /* AppDelegate.swift */; };
 		35EB12EF220DC45800D91BD6 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB12EE220DC45800D91BD6 /* DashboardViewController.swift */; };
 		35EB12F2220DC45800D91BD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35EB12F0220DC45800D91BD6 /* Main.storyboard */; };
@@ -22,6 +26,10 @@
 /* Begin PBXFileReference section */
 		35E358B7220EE7230012D97E /* TopBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarViewController.swift; sourceTree = "<group>"; };
 		35E585772220617F00E9A4D3 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		35E5857A22206AAA00E9A4D3 /* UITAPGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITAPGesture.swift; sourceTree = "<group>"; };
+		35E5857D22206AFB00E9A4D3 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		35E5858122206BD200E9A4D3 /* RootNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigation.swift; sourceTree = "<group>"; };
 		35EB12E9220DC45800D91BD6 /* Game News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35EB12EC220DC45800D91BD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35EB12EE220DC45800D91BD6 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +53,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35E5857922206A8200E9A4D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				35E5857A22206AAA00E9A4D3 /* UITAPGesture.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		35E5857C22206AEB00E9A4D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35E5857D22206AFB00E9A4D3 /* CustomView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		35EB12E0220DC45800D91BD6 = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +88,12 @@
 		35EB12EB220DC45800D91BD6 /* Game News */ = {
 			isa = PBXGroup;
 			children = (
+				35E5857C22206AEB00E9A4D3 /* Views */,
+				35E5857922206A8200E9A4D3 /* Models */,
 				35EB12EC220DC45800D91BD6 /* AppDelegate.swift */,
+				35E5858122206BD200E9A4D3 /* RootNavigation.swift */,
 				35EB12EE220DC45800D91BD6 /* DashboardViewController.swift */,
+				35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */,
 				35E358B7220EE7230012D97E /* TopBarViewController.swift */,
 				35EB1300220DD0A500D91BD6 /* Repository.swift */,
 				35EB12F0220DC45800D91BD6 /* Main.storyboard */,
@@ -152,8 +180,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				35E358B8220EE7230012D97E /* TopBarViewController.swift in Sources */,
+				35E5857E22206AFB00E9A4D3 /* CustomView.swift in Sources */,
+				35E5857B22206AAA00E9A4D3 /* UITAPGesture.swift in Sources */,
 				35EB12EF220DC45800D91BD6 /* DashboardViewController.swift in Sources */,
 				35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */,
+				35E5858222206BD200E9A4D3 /* RootNavigation.swift in Sources */,
+				35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */,
 				35EB12ED220DC45800D91BD6 /* AppDelegate.swift in Sources */,
 				35EB1303220DFA2500D91BD6 /* CollectionViewCell.swift in Sources */,
 				35EB1301220DD0A500D91BD6 /* Repository.swift in Sources */,
