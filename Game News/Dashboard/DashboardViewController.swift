@@ -16,7 +16,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     let count = 3
     var row = 0
     var lastContentOffsetX: CGFloat = 0.0
-
+    var dashboardInteractor = DashboardInteractor()
     let imageArray = ["Silkroad","LOL","Pubg"]
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return count
@@ -24,6 +24,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     @IBOutlet weak var pageController: UIPageControl!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         guard let wrappedcell = cell as? CollectionViewCell else {
@@ -33,7 +35,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         wrappedcell.imageView.image = UIImage(named: imageArray[indexPath.row])
         return wrappedcell
     }
-    @IBOutlet weak var collectionView: UICollectionView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let storyboard =  UIStoryboard(name: "Main", bundle: nil)
@@ -43,7 +45,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         view.addSubview(topBarVC.view)
         topBarVC.didMove(toParent: self)
         _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-        rep.data()
+        dashboardInteractor.getData { (model) in
+            print(model)
+        }
         setupStackView()
     }
     override func viewWillAppear(_ animated: Bool) {

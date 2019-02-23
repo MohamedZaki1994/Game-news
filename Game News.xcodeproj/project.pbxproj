@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E338B122218E35000A555C /* DashboardInteractor.swift */; };
+		35E338B52221905E000A555C /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E338B42221905E000A555C /* DashboardModel.swift */; };
 		35E358B8220EE7230012D97E /* TopBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E358B7220EE7230012D97E /* TopBarViewController.swift */; };
 		35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E585772220617F00E9A4D3 /* DetailedViewController.swift */; };
 		35E5857B22206AAA00E9A4D3 /* UITAPGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857A22206AAA00E9A4D3 /* UITAPGesture.swift */; };
@@ -21,9 +23,12 @@
 		35EB12FF220DC72D00D91BD6 /* head.json in Resources */ = {isa = PBXBuildFile; fileRef = 35EB12FE220DC72D00D91BD6 /* head.json */; };
 		35EB1301220DD0A500D91BD6 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB1300220DD0A500D91BD6 /* Repository.swift */; };
 		35EB1303220DFA2500D91BD6 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB1302220DFA2500D91BD6 /* CollectionViewCell.swift */; };
+		F0906FC335E8BA81CFA503F6 /* Pods_Game_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F4EDC684462AE1B8EAB851 /* Pods_Game_News.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35E338B122218E35000A555C /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
+		35E338B42221905E000A555C /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		35E358B7220EE7230012D97E /* TopBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarViewController.swift; sourceTree = "<group>"; };
 		35E585772220617F00E9A4D3 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		35E5857A22206AAA00E9A4D3 /* UITAPGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITAPGesture.swift; sourceTree = "<group>"; };
@@ -40,6 +45,9 @@
 		35EB12FE220DC72D00D91BD6 /* head.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = head.json; sourceTree = "<group>"; };
 		35EB1300220DD0A500D91BD6 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		35EB1302220DFA2500D91BD6 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		74A7B9B5A1738590128202BD /* Pods-Game News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Game News/Pods-Game News.debug.xcconfig"; sourceTree = "<group>"; };
+		8121EE05FF15F717827258D7 /* Pods-Game News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game News.release.xcconfig"; path = "Pods/Target Support Files/Pods-Game News/Pods-Game News.release.xcconfig"; sourceTree = "<group>"; };
+		A9F4EDC684462AE1B8EAB851 /* Pods_Game_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Game_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,16 +55,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0906FC335E8BA81CFA503F6 /* Pods_Game_News.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14A0138DA859AD13BC1110AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9F4EDC684462AE1B8EAB851 /* Pods_Game_News.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		35E338B322218E3E000A555C /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				35E338B122218E35000A555C /* DashboardInteractor.swift */,
+				35EB12EE220DC45800D91BD6 /* DashboardViewController.swift */,
+				35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		35E5857922206A8200E9A4D3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				35E5857A22206AAA00E9A4D3 /* UITAPGesture.swift */,
+				35E338B42221905E000A555C /* DashboardModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -74,6 +102,8 @@
 			children = (
 				35EB12EB220DC45800D91BD6 /* Game News */,
 				35EB12EA220DC45800D91BD6 /* Products */,
+				CF837498BF453BF8EA756C9F /* Pods */,
+				14A0138DA859AD13BC1110AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,16 +118,15 @@
 		35EB12EB220DC45800D91BD6 /* Game News */ = {
 			isa = PBXGroup;
 			children = (
+				35E338B322218E3E000A555C /* Dashboard */,
 				35E5857C22206AEB00E9A4D3 /* Views */,
 				35E5857922206A8200E9A4D3 /* Models */,
 				35EB12EC220DC45800D91BD6 /* AppDelegate.swift */,
+				35E585772220617F00E9A4D3 /* DetailedViewController.swift */,
 				35E5858122206BD200E9A4D3 /* RootNavigation.swift */,
-				35EB12EE220DC45800D91BD6 /* DashboardViewController.swift */,
-				35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */,
 				35E358B7220EE7230012D97E /* TopBarViewController.swift */,
 				35EB1300220DD0A500D91BD6 /* Repository.swift */,
 				35EB12F0220DC45800D91BD6 /* Main.storyboard */,
-				35E585772220617F00E9A4D3 /* DetailedViewController.swift */,
 				35EB12F3220DC45800D91BD6 /* Assets.xcassets */,
 				35EB12F5220DC45800D91BD6 /* LaunchScreen.storyboard */,
 				35EB12F8220DC45800D91BD6 /* Info.plist */,
@@ -107,6 +136,15 @@
 			path = "Game News";
 			sourceTree = "<group>";
 		};
+		CF837498BF453BF8EA756C9F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74A7B9B5A1738590128202BD /* Pods-Game News.debug.xcconfig */,
+				8121EE05FF15F717827258D7 /* Pods-Game News.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,6 +152,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35EB12FB220DC45800D91BD6 /* Build configuration list for PBXNativeTarget "Game News" */;
 			buildPhases = (
+				8C0BFF93EF494ACCC11A2306 /* [CP] Check Pods Manifest.lock */,
 				35EB12E5220DC45800D91BD6 /* Sources */,
 				35EB12E6220DC45800D91BD6 /* Frameworks */,
 				35EB12E7220DC45800D91BD6 /* Resources */,
@@ -174,6 +213,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8C0BFF93EF494ACCC11A2306 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Game News-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35EB12E5220DC45800D91BD6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -183,9 +247,11 @@
 				35E5857E22206AFB00E9A4D3 /* CustomView.swift in Sources */,
 				35E5857B22206AAA00E9A4D3 /* UITAPGesture.swift in Sources */,
 				35EB12EF220DC45800D91BD6 /* DashboardViewController.swift in Sources */,
+				35E338B52221905E000A555C /* DashboardModel.swift in Sources */,
 				35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */,
 				35E5858222206BD200E9A4D3 /* RootNavigation.swift in Sources */,
 				35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */,
+				35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */,
 				35EB12ED220DC45800D91BD6 /* AppDelegate.swift in Sources */,
 				35EB1303220DFA2500D91BD6 /* CollectionViewCell.swift in Sources */,
 				35EB1301220DD0A500D91BD6 /* Repository.swift in Sources */,
@@ -332,6 +398,7 @@
 		};
 		35EB12FC220DC45800D91BD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74A7B9B5A1738590128202BD /* Pods-Game News.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -349,6 +416,7 @@
 		};
 		35EB12FD220DC45800D91BD6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8121EE05FF15F717827258D7 /* Pods-Game News.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

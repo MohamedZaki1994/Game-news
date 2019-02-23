@@ -1,5 +1,5 @@
 {
-    "Game": [
+    "games": [
         {"name":"Silkroad"} , {"name":"Conquer"} , {"name":"PUBG"},
         {"name": "League of Legend"}
     ]
