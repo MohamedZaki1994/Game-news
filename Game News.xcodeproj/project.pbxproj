@@ -23,7 +23,6 @@
 		35EB12FF220DC72D00D91BD6 /* head.json in Resources */ = {isa = PBXBuildFile; fileRef = 35EB12FE220DC72D00D91BD6 /* head.json */; };
 		35EB1301220DD0A500D91BD6 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB1300220DD0A500D91BD6 /* Repository.swift */; };
 		35EB1303220DFA2500D91BD6 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB1302220DFA2500D91BD6 /* CollectionViewCell.swift */; };
-		35FAE0AA222AD50F0049D52E /* DetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FAE0A9222AD50F0049D52E /* DetailedView.swift */; };
 		F0906FC335E8BA81CFA503F6 /* Pods_Game_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F4EDC684462AE1B8EAB851 /* Pods_Game_News.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		35EB12FE220DC72D00D91BD6 /* head.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = head.json; sourceTree = "<group>"; };
 		35EB1300220DD0A500D91BD6 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		35EB1302220DFA2500D91BD6 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		35FAE0A9222AD50F0049D52E /* DetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedView.swift; sourceTree = "<group>"; };
 		74A7B9B5A1738590128202BD /* Pods-Game News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Game News/Pods-Game News.debug.xcconfig"; sourceTree = "<group>"; };
 		8121EE05FF15F717827258D7 /* Pods-Game News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game News.release.xcconfig"; path = "Pods/Target Support Files/Pods-Game News/Pods-Game News.release.xcconfig"; sourceTree = "<group>"; };
 		A9F4EDC684462AE1B8EAB851 /* Pods_Game_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Game_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				35E585772220617F00E9A4D3 /* DetailedViewController.swift */,
-				35FAE0A9222AD50F0049D52E /* DetailedView.swift */,
 			);
 			path = "More Details";
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 				35EB12EF220DC45800D91BD6 /* DashboardViewController.swift in Sources */,
 				35E338B52221905E000A555C /* DashboardModel.swift in Sources */,
 				35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */,
-				35FAE0AA222AD50F0049D52E /* DetailedView.swift in Sources */,
 				35E5858222206BD200E9A4D3 /* RootNavigation.swift in Sources */,
 				35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */,
 				35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */,
