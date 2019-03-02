@@ -16,6 +16,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     let count = 3
     var row = 0
     var lastContentOffsetX: CGFloat = 0.0
+    var timer: Timer?
     var dashboardInteractor = DashboardInteractor()
     let imageArray = ["Silkroad","LOL","Pubg"]
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -44,17 +45,36 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         topBarVC.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         view.addSubview(topBarVC.view)
         topBarVC.didMove(toParent: self)
-        _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         dashboardInteractor.getData { (model) in
             print(model)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(didFinished), name: Notification.Name("didReceiveData"), object: nil)
         setupStackView()
+        dashboardInteractor.testNotification()
+    }
+
+    deinit {
+        timer?.invalidate()
+        timer = nil
+        NotificationCenter.default.removeObserver(self)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+        timer = nil
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc func didFinished(nsNotification: Notification) {
+        guard let data = nsNotification.userInfo as? [String: String] else {
+            return
+        }
+        print(data)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
-
     @objc func timerAction() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, animations: {

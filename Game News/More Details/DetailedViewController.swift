@@ -12,6 +12,13 @@ class DetailedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var detailedView = DetailedView()
+        self.view.addSubview(detailedView)
+        detailedView.translatesAutoresizingMaskIntoConstraints = false
+        detailedView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        detailedView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        detailedView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        detailedView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
