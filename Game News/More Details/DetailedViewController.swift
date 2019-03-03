@@ -18,14 +18,17 @@ class DetailedViewController: UIViewController {
         path.addLine(to: CGPoint(x: 10, y: 400))
         path.close()
         path.fill()
-        path.lineWidth = 3
-        UIColor.green.setStroke()
         path.stroke()
-        let layer = CAShapeLayer()
-        layer.strokeColor = UIColor.red.cgColor
-        layer.path = path.cgPath
-        view.layer.addSublayer(layer)
-        layer.lineWidth = 3
+        let shapedLayer = CAShapeLayer()
+        shapedLayer.strokeColor = UIColor.red.cgColor
+        shapedLayer.path = path.cgPath
+        view.layer.addSublayer(shapedLayer)
+        shapedLayer.lineWidth = 10
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 0.0
+        animation.toValue = 1.0
+        animation.duration = 2
+        shapedLayer.add(animation, forKey: "drawLine")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
