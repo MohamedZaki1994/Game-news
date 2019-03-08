@@ -12,4 +12,5 @@ class CustomView: UIView {
     var viewHeightCollapsed: NSLayoutConstraint?
     var viewHeightExtended: NSLayoutConstraint?
     var more: UILabel?
+    var icon: UIImageView?
 }

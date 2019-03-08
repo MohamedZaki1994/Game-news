@@ -13,3 +13,25 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 }
+
+
+extension DashboardViewController: UIScrollViewDelegate {
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // moving to the right
+        if scrollView.contentOffset.x - lastContentOffsetX > 0.0 {
+            pageController.currentPage = row + 1
+            row += 1
+            if row == 3 {
+                row = 0
+            }
+        } else if scrollView.contentOffset.x - lastContentOffsetX < 0.0 {
+            pageController.currentPage = row - 1
+            row -= 1
+            if row == -1 {
+                row = 0
+            }
+        }
+        lastContentOffsetX = scrollView.contentOffset.x
+    }
+}

@@ -17,6 +17,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     var row = 0
     var lastContentOffsetX: CGFloat = 0.0
     var timer: Timer?
+    var arrowIcon = [UIImageView]()
     var dashboardInteractor = DashboardInteractor()
     let imageArray = ["Silkroad","LOL","Pubg"]
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -74,6 +75,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        navigationController?.navigationBar.isHidden = true
     }
     @objc func timerAction() {
         DispatchQueue.main.async {
@@ -96,39 +98,31 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         
     }
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        // moving to the right
-        if scrollView.contentOffset.x - lastContentOffsetX > 0.0 {
-        pageController.currentPage = row + 1
-            row += 1
-            if row == 3 {
-                row = 0
-            }
-        } else if scrollView.contentOffset.x - lastContentOffsetX < 0.0 {
-            pageController.currentPage = row - 1
-            row -= 1
-            if row == -1 {
-                row = 0
-            }
-        }
-        lastContentOffsetX = scrollView.contentOffset.x
-    }
+
     var viewHeightCollapsed: NSLayoutConstraint?
     var viewHeightExtended: NSLayoutConstraint?
     func setupStackView() {
-        for imj in imageArray {
-            let image = UIImage(named: imj)
+        for imj in imageArray.enumerated() {
+            let image = UIImage(named: imj.element)
             let imageView = UIImageView(image: image)
             imageView.translatesAutoresizingMaskIntoConstraints = false
             let label = UILabel()
             label.text = "Test"
             label.translatesAutoresizingMaskIntoConstraints = false
             let view = CustomView()
+            view.addSubview(imageView)
             view.translatesAutoresizingMaskIntoConstraints = false
             view.viewHeightCollapsed = view.heightAnchor.constraint(equalToConstant: 120)
                 view.viewHeightCollapsed?.isActive = true
             view.more = label
-            view.addSubview(imageView)
+            arrowIcon.append(UIImageView(image: UIImage(named: "arrowDown")))
+            arrowIcon[imj.offset].backgroundColor = .red
+            view.addSubview(arrowIcon[imj.offset])
+            arrowIcon[imj.offset].translatesAutoresizingMaskIntoConstraints = false
+            arrowIcon[imj.offset].heightAnchor.constraint(equalToConstant: 20).isActive = true
+            arrowIcon[imj.offset].widthAnchor.constraint(equalToConstant: 20).isActive = true
+            arrowIcon[imj.offset].trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            arrowIcon[imj.offset].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
             view.addSubview(label)
             label.textColor = .red
             label.numberOfLines = 0
@@ -140,6 +134,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             let tap = UITAPGesture(target: self, action: #selector(handleAction))
             tap.tapedView = view
             tap.isOpened = false
+            tap.tapedView?.icon = arrowIcon[imj.offset]
             stackView.addArrangedSubview(view)
             imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
             imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -150,7 +145,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     @objc func handleAction(sender: UITAPGesture) {
         guard let tapedView = sender.tapedView,
-        let isOpened = sender.isOpened else {return}
+        let isOpened = sender.isOpened,
+        let icon = sender.tapedView?.icon else {return}
         if isOpened {
             tapedView.more?.alpha = 0.25
             UIView.animate(withDuration: 1) {
@@ -159,6 +155,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 tapedView.viewHeightExtended?.isActive = false
                 tapedView.viewHeightCollapsed?.isActive = true //tapedView.heightAnchor.constraint(equalToConstant: 100).isActive = true
                 sender.isOpened = false
+                icon.transform = CGAffineTransform(rotationAngle: CGFloat(0))
                 self.view.layoutIfNeeded()
             }
         } else {
@@ -170,11 +167,13 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 tapedView.viewHeightExtended = tapedView.heightAnchor.constraint(equalToConstant: 200)
                 tapedView.viewHeightExtended?.isActive = true
                 sender.isOpened = true
+                icon.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
                 self.view.layoutIfNeeded()
             }
             
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailedViewController") as? DetailedViewController else {
             return
