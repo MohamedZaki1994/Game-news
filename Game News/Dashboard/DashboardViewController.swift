@@ -19,14 +19,16 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     var arrowIcon = [UIImageView]()
     var dashboardInteractor = DashboardInteractor()
     var imageArray = [String]()
+    var viewHeightCollapsed: NSLayoutConstraint?
+    var viewHeightExtended: NSLayoutConstraint?
+    @IBOutlet weak var pageController: UIPageControl!
+    @IBOutlet weak var collectionView: UICollectionView!
+
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
     }
-    
-    
-    @IBOutlet weak var pageController: UIPageControl!
-    @IBOutlet weak var collectionView: UICollectionView!
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         guard let wrappedcell = cell as? CollectionViewCell else {
@@ -68,6 +70,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         timer = nil
         NotificationCenter.default.removeObserver(self)
     }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
@@ -107,8 +110,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         
     }
 
-    var viewHeightCollapsed: NSLayoutConstraint?
-    var viewHeightExtended: NSLayoutConstraint?
     func setupStackView() {
         for imj in imageArray.enumerated() {
             let image = UIImage(named: imj.element)
@@ -126,19 +127,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             arrowIcon.append(UIImageView(image: UIImage(named: "arrowDown")))
             arrowIcon[imj.offset].backgroundColor = .red
             view.addSubview(arrowIcon[imj.offset])
-            arrowIcon[imj.offset].translatesAutoresizingMaskIntoConstraints = false
-            arrowIcon[imj.offset].heightAnchor.constraint(equalToConstant: 20).isActive = true
-            arrowIcon[imj.offset].widthAnchor.constraint(equalToConstant: 20).isActive = true
-            arrowIcon[imj.offset].trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            arrowIcon[imj.offset].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+            addIcon(imj, view)
             view.addSubview(label)
-            label.textColor = .red
-            label.numberOfLines = 0
-            label.text = "See more"
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
-            label.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
-            label.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
-            label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            addingLabel(label, imageView, view)
             let tap = UITAPGesture(target: self, action: #selector(handleAction))
             tap.tapedView = view
             tap.isOpened = false
@@ -151,6 +142,25 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             imageView.addGestureRecognizer(tap)
         }
     }
+
+    fileprivate func addingLabel(_ label: UILabel, _ imageView: UIImageView, _ view: CustomView) {
+        label.textColor = .red
+        label.numberOfLines = 0
+        label.text = "See more"
+        label.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+        label.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
+        label.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+
+    fileprivate func addIcon(_ imj: (offset: Int, element: String), _ view: CustomView) {
+        arrowIcon[imj.offset].translatesAutoresizingMaskIntoConstraints = false
+        arrowIcon[imj.offset].heightAnchor.constraint(equalToConstant: 20).isActive = true
+        arrowIcon[imj.offset].widthAnchor.constraint(equalToConstant: 20).isActive = true
+        arrowIcon[imj.offset].trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        arrowIcon[imj.offset].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+    }
+
     @objc func handleAction(sender: UITAPGesture) {
         guard let tapedView = sender.tapedView,
         let isOpened = sender.isOpened,
