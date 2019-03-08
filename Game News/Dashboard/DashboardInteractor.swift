@@ -12,10 +12,12 @@ class DashboardInteractor {
 
     var viewModel = DashboardViewModel()
 
-    func getData(sucess: (DashboardModel) -> Void) {
+    func getData(sucess: (DashboardViewModel) -> Void) {
         rep.data { model in
-            print(model)
-            sucess(model)
+            viewModel.names = model.games?.compactMap({ (games) in
+                return games.name
+            })
+            sucess(viewModel)
         }
     }
     func testNotification() {

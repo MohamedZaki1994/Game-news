@@ -49,15 +49,10 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         view.addSubview(topBarVC.view)
         topBarVC.didMove(toParent: self)
         dashboardInteractor.getData { (model) in
-            guard let games = model.games else {
+            guard let games = model.names else {
                 return
             }
-            imageArray = games.compactMap({ (games) in
-                guard let name = games.name else {
-                    return nil
-                }
-                return name
-            })
+            imageArray = games
             pageController.numberOfPages = imageArray.count
             self.collectionView.reloadData()
         }
