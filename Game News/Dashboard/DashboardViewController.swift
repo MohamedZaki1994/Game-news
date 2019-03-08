@@ -19,6 +19,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     var arrowIcon = [UIImageView]()
     var dashboardInteractor = DashboardInteractor()
     var imageArray = [String]()
+    var viewModel = DashboardViewModel()
     var viewHeightCollapsed: NSLayoutConstraint?
     var viewHeightExtended: NSLayoutConstraint?
     @IBOutlet weak var pageController: UIPageControl!
@@ -89,6 +90,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         navigationController?.navigationBar.isHidden = true
     }
+
     @objc func timerAction() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, animations: {

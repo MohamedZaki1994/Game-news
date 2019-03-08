@@ -10,6 +10,8 @@ import Foundation
 
 class DashboardInteractor {
 
+    var viewModel = DashboardViewModel()
+
     func getData(sucess: (DashboardModel) -> Void) {
         rep.data { model in
             print(model)

@@ -10,6 +10,7 @@
 		35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E338B122218E35000A555C /* DashboardInteractor.swift */; };
 		35E338B52221905E000A555C /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E338B42221905E000A555C /* DashboardModel.swift */; };
 		35E358B8220EE7230012D97E /* TopBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E358B7220EE7230012D97E /* TopBarViewController.swift */; };
+		35E4CD682232EB0B00B571DB /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4CD672232EB0B00B571DB /* DashboardViewModel.swift */; };
 		35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E585772220617F00E9A4D3 /* DetailedViewController.swift */; };
 		35E5857B22206AAA00E9A4D3 /* UITAPGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857A22206AAA00E9A4D3 /* UITAPGesture.swift */; };
 		35E5857E22206AFB00E9A4D3 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857D22206AFB00E9A4D3 /* CustomView.swift */; };
@@ -30,6 +31,7 @@
 		35E338B122218E35000A555C /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
 		35E338B42221905E000A555C /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		35E358B7220EE7230012D97E /* TopBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarViewController.swift; sourceTree = "<group>"; };
+		35E4CD672232EB0B00B571DB /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		35E585772220617F00E9A4D3 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		35E5857A22206AAA00E9A4D3 /* UITAPGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITAPGesture.swift; sourceTree = "<group>"; };
 		35E5857D22206AFB00E9A4D3 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				35E338B122218E35000A555C /* DashboardInteractor.swift */,
 				35EB12EE220DC45800D91BD6 /* DashboardViewController.swift */,
 				35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */,
+				35E4CD672232EB0B00B571DB /* DashboardViewModel.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */,
 				35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */,
 				35EB12ED220DC45800D91BD6 /* AppDelegate.swift in Sources */,
+				35E4CD682232EB0B00B571DB /* DashboardViewModel.swift in Sources */,
 				35EB1303220DFA2500D91BD6 /* CollectionViewCell.swift in Sources */,
 				35EB1301220DD0A500D91BD6 /* Repository.swift in Sources */,
 			);
