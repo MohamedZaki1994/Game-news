@@ -22,7 +22,7 @@ extension DashboardViewController: UIScrollViewDelegate {
         if scrollView.contentOffset.x - lastContentOffsetX > 0.0 {
             pageController.currentPage = row + 1
             row += 1
-            if row == 3 {
+            if row == imageArray.count {
                 row = 0
             }
         } else if scrollView.contentOffset.x - lastContentOffsetX < 0.0 {

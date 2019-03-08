@@ -1,6 +1,6 @@
 {
     "games": [
-        {"name":"Silkroad"} , {"name":"Conquer"} , {"name":"PUBG"},
-        {"name": "League of Legend"}
+        {"name":"Silkroad"} , {"name":"Conquer"} , {"name":"Pubg"},
+        {"name": "LOL"}
     ]
 }

@@ -13,15 +13,14 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var container: UIView!
-    let count = 3
     var row = 0
     var lastContentOffsetX: CGFloat = 0.0
     var timer: Timer?
     var arrowIcon = [UIImageView]()
     var dashboardInteractor = DashboardInteractor()
-    let imageArray = ["Silkroad","LOL","Pubg"]
+    var imageArray = [String]()
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return count
+        return imageArray.count
     }
     
     
@@ -47,7 +46,17 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         view.addSubview(topBarVC.view)
         topBarVC.didMove(toParent: self)
         dashboardInteractor.getData { (model) in
-            print(model)
+            guard let games = model.games else {
+                return
+            }
+            imageArray = games.compactMap({ (games) in
+                guard let name = games.name else {
+                    return nil
+                }
+                return name
+            })
+            pageController.numberOfPages = imageArray.count
+            self.collectionView.reloadData()
         }
         NotificationCenter.default.addObserver(self, selector: #selector(didFinished), name: Notification.Name("didReceiveData"), object: nil)
         setupStackView()
@@ -80,11 +89,10 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     @objc func timerAction() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, animations: {
-                print(self.row)
                 self.view.layoutIfNeeded()
                 self.row += 1
                 self.lastContentOffsetX += self.collectionView.frame.width
-                if self.row == self.count {
+                if self.row == self.imageArray.count {
                     self.row = 0
                     self.lastContentOffsetX = 0.0
                 }
