@@ -13,6 +13,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var container: UIView!
+    let animatorobj = animator()
     var row = 0
     var lastContentOffsetX: CGFloat = 0.0
     var timer: Timer?
@@ -194,6 +195,34 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             return
             
         }
-        self.pushViewController(viewController: vc)
+        vc.transitioningDelegate = self
+        present(vc, animated: true, completion: nil)
+    }
+}
+class animator: NSObject, UIViewControllerAnimatedTransitioning {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0
+    }
+
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let containerView = transitionContext.containerView
+        guard let toView = transitionContext.view(forKey: .to) else {return}
+        toView.transform = CGAffineTransform(scaleX: -0.2, y: -0.2)
+        UIView.animate(withDuration: 0.5, animations: {
+            toView.transform = .identity
+        }) { (_) in
+            transitionContext.completeTransition(true)
+        }
+        containerView.addSubview(toView)
+    }
+
+
+}
+extension DashboardViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return animatorobj
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
     }
 }
