@@ -200,29 +200,42 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     }
 }
 class animator: NSObject, UIViewControllerAnimatedTransitioning {
+    var flag = false
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
-        guard let toView = transitionContext.view(forKey: .to) else {return}
-        toView.transform = CGAffineTransform(scaleX: -0.2, y: -0.2)
-        UIView.animate(withDuration: 0.5, animations: {
-            toView.transform = .identity
-        }) { (_) in
-            transitionContext.completeTransition(true)
+            guard let toView = transitionContext.view(forKey: .to) else {return}
+        if flag {
+            toView.transform = CGAffineTransform(scaleX: -0.1, y: -0.1)
+            UIView.animate(withDuration: 0.5, animations: {
+                toView.transform = .identity
+            }) { (_) in
+                transitionContext.completeTransition(true)
+            }
+            containerView.addSubview(toView)
+        } else {
+            guard let fromView = transitionContext.view(forKey: .from) else {return}
+            fromView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            UIView.animate(withDuration: 0.5, animations: {
+                fromView.transform = CGAffineTransform(scaleX: -0.1, y: -0.1)
+            }) { (_) in
+                transitionContext.completeTransition(true)
+            }
+            containerView.addSubview(toView)
+            containerView.bringSubviewToFront(fromView)
         }
-        containerView.addSubview(toView)
     }
-
-
 }
 extension DashboardViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        animatorobj.flag = true
         return animatorobj
     }
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
+        animatorobj.flag = false
+        return animatorobj
     }
 }
