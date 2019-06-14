@@ -184,17 +184,52 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Silkroad" translatesAutoresizingMaskIntoConstraints="NO" id="MuM-PF-iNk">
                                 <rect key="frame" x="67" y="64" width="240" height="128"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goa-IJ-lA2">
+                                <rect key="frame" x="165" y="318" width="45" height="30"/>
+                                <state key="normal" title="Flicker"/>
+                                <connections>
+                                    <action selector="flicker:" destination="CKK-k8-dup" eventType="touchUpInside" id="wK1-P8-jXX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0g-KZ-cZn">
+                                <rect key="frame" x="15" y="57" width="46" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="back:" destination="CKK-k8-dup" eventType="touchUpInside" id="fi9-FL-QyR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZl-pg-Wrx">
+                                <rect key="frame" x="165" y="238" width="45" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="MuM-PF-iNk" secondAttribute="bottom" constant="475" id="0Uv-lo-ct6"/>
+                            <constraint firstItem="hZl-pg-Wrx" firstAttribute="leading" secondItem="goa-IJ-lA2" secondAttribute="leading" id="41q-QL-NqZ"/>
+                            <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" constant="165" id="Di2-7D-vuV"/>
+                            <constraint firstItem="p0g-KZ-cZn" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="37" id="E8a-SD-yXZ"/>
+                            <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="hZl-pg-Wrx" secondAttribute="bottom" constant="50" id="Lb8-DZ-68N"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="MuM-PF-iNk" secondAttribute="trailing" constant="68" id="QjD-3a-KqH"/>
+                            <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="p0g-KZ-cZn" secondAttribute="bottom" constant="580" id="Tni-DG-n8i"/>
+                            <constraint firstItem="goa-IJ-lA2" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="165" id="Vai-2V-Tw3"/>
+                            <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="goa-IJ-lA2" secondAttribute="bottom" constant="319" id="WiF-IY-trU"/>
                             <constraint firstItem="MuM-PF-iNk" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="44" id="c1H-15-STO"/>
+                            <constraint firstItem="hZl-pg-Wrx" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" id="dty-Av-cZr"/>
+                            <constraint firstItem="hZl-pg-Wrx" firstAttribute="height" secondItem="goa-IJ-lA2" secondAttribute="height" id="gMc-1h-89S"/>
+                            <constraint firstItem="MuM-PF-iNk" firstAttribute="leading" secondItem="p0g-KZ-cZn" secondAttribute="trailing" constant="6" id="gcE-DQ-Byu"/>
+                            <constraint firstItem="p0g-KZ-cZn" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="15" id="nRI-Zb-8c7"/>
+                            <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="MuM-PF-iNk" secondAttribute="bottom" constant="126" id="of3-ew-zAI"/>
                             <constraint firstItem="MuM-PF-iNk" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="67" id="tno-z4-RAT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t2M-0h-G6r"/>
                     </view>
                     <connections>
+                        <outlet property="doneLabel" destination="hZl-pg-Wrx" id="rVQ-90-AwQ"/>
+                        <outlet property="fickerLabel" destination="goa-IJ-lA2" id="oGC-vs-f43"/>
                         <outlet property="imageView" destination="MuM-PF-iNk" id="fuA-d6-LcE"/>
                     </connections>
                 </viewController>
