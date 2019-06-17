@@ -68,8 +68,18 @@ class DetailedViewController: UIViewController, TopBardProtocol{
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        flickerBtn.isHidden = false
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 5
+        animation.fillMode = .backwards
+        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        animation.fromValue = [-flickerBtn.frame.width/2,flickerBtn.frame.midY]
+        animation.toValue = [flickerBtn.frame.midX,flickerBtn.frame.midY]
+        animation.beginTime = CACurrentMediaTime() + 2
+        flickerBtn.layer.add(animation, forKey: nil)
+
     }
 
     func dismiss() {
