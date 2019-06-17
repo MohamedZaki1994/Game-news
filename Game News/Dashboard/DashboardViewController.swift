@@ -34,7 +34,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        guard let wrappedcell = cell as? CollectionViewCell else {
+        guard let wrappedcell = cell as? DashboardCollectionViewCell else {
             return cell
         }
         wrappedcell.title.text = "hello\(indexPath.row)"

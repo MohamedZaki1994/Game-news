@@ -14,6 +14,9 @@ protocol TopBardProtocol {
 
 class DetailedViewController: UIViewController, TopBardProtocol{
 
+
+    @IBOutlet weak var collectionView: UICollectionView!
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var doneLabel: UILabel!
 
@@ -65,6 +68,8 @@ class DetailedViewController: UIViewController, TopBardProtocol{
     override func viewDidLoad() {
         super.viewDidLoad()
         doneLabel.isHidden = true
+        let xib = UINib(nibName: "DetailedCollectionViewCell", bundle: Bundle.main)
+        collectionView.register(xib, forCellWithReuseIdentifier: "cell")
 
     }
 
@@ -85,5 +90,23 @@ class DetailedViewController: UIViewController, TopBardProtocol{
     func dismiss() {
         dismiss(animated: true, completion: nil)
     }
+
+}
+
+extension DetailedViewController: UICollectionViewDelegate {
+
+}
+
+extension DetailedViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DetailedCollectionViewCell
+        cell.label.text = "\(indexPath.row)"
+        return cell
+    }
+
 
 }

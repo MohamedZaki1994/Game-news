@@ -37,7 +37,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Uel-RR-gVA" customClass="CollectionViewCell" customModule="Game_News" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Uel-RR-gVA" customClass="DashboardCollectionViewCell" customModule="Game_News" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="93" height="83"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -227,10 +227,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v1X-tj-gt5">
+                                <rect key="frame" x="10" y="406" width="355" height="251"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eHK-Af-W3F">
+                                    <size key="itemSize" width="92" height="64"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CKK-k8-dup" id="x0g-rU-e5h"/>
+                                    <outlet property="delegate" destination="CKK-k8-dup" id="xWv-mL-FYH"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.50936175554277585" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="MuM-PF-iNk" secondAttribute="bottom" constant="475" id="0Uv-lo-ct6"/>
+                            <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="v1X-tj-gt5" secondAttribute="bottom" constant="10" id="20O-P1-ZOS"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="leading" secondItem="goa-IJ-lA2" secondAttribute="leading" id="41q-QL-NqZ"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" constant="165" id="Di2-7D-vuV"/>
                             <constraint firstItem="p0g-KZ-cZn" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="20" id="E8a-SD-yXZ"/>
@@ -238,16 +254,20 @@
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="MuM-PF-iNk" secondAttribute="trailing" constant="68" id="QjD-3a-KqH"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="165" id="Vai-2V-Tw3"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="goa-IJ-lA2" secondAttribute="bottom" constant="319" id="WiF-IY-trU"/>
+                            <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="v1X-tj-gt5" secondAttribute="trailing" constant="10" id="Zzu-e6-IOk"/>
+                            <constraint firstItem="v1X-tj-gt5" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="10" id="b8g-mP-ESt"/>
                             <constraint firstItem="MuM-PF-iNk" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="44" id="c1H-15-STO"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" id="dty-Av-cZr"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="height" secondItem="goa-IJ-lA2" secondAttribute="height" id="gMc-1h-89S"/>
                             <constraint firstItem="p0g-KZ-cZn" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="15" id="nRI-Zb-8c7"/>
+                            <constraint firstItem="v1X-tj-gt5" firstAttribute="top" secondItem="goa-IJ-lA2" secondAttribute="bottom" constant="58" id="o9F-7O-Vuw"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="MuM-PF-iNk" secondAttribute="bottom" constant="126" id="of3-ew-zAI"/>
                             <constraint firstItem="MuM-PF-iNk" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="67" id="tno-z4-RAT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t2M-0h-G6r"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="v1X-tj-gt5" id="NiC-5L-iWF"/>
                         <outlet property="doneLabel" destination="hZl-pg-Wrx" id="rVQ-90-AwQ"/>
                         <outlet property="fickerLabel" destination="goa-IJ-lA2" id="oGC-vs-f43"/>
                         <outlet property="flickerBtn" destination="goa-IJ-lA2" id="Naf-un-UTu"/>
