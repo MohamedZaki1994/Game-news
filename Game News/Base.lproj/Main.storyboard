@@ -154,9 +154,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHu-lK-wkz">
                                 <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19d-FH-sCa">
+                                        <rect key="frame" x="30" y="10" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="backBtn:" destination="oIk-DF-rbg" eventType="touchUpInside" id="c2D-fi-8o0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BzF-48-Xf3"/>
+                                    <constraint firstItem="19d-FH-sCa" firstAttribute="leading" secondItem="cHu-lK-wkz" secondAttribute="leading" constant="30" id="Fl5-I4-OYo"/>
+                                    <constraint firstItem="19d-FH-sCa" firstAttribute="top" secondItem="cHu-lK-wkz" secondAttribute="top" constant="10" id="eyD-ME-zf2"/>
+                                    <constraint firstAttribute="bottom" secondItem="19d-FH-sCa" secondAttribute="bottom" constant="10" id="gV6-63-AhG"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -191,9 +203,13 @@
                                     <action selector="flicker:" destination="CKK-k8-dup" eventType="touchUpInside" id="wK1-P8-jXX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0g-KZ-cZn">
-                                <rect key="frame" x="15" y="57" width="46" height="30"/>
-                                <state key="normal" title="Back"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0g-KZ-cZn">
+                                <rect key="frame" x="15" y="40" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="0j0-5X-XuT"/>
+                                    <constraint firstAttribute="height" constant="30" id="U2B-QT-xe2"/>
+                                </constraints>
+                                <state key="normal" title="Back" image="back"/>
                                 <connections>
                                     <action selector="back:" destination="CKK-k8-dup" eventType="touchUpInside" id="fi9-FL-QyR"/>
                                 </connections>
@@ -206,21 +222,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.50936175554277585" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="MuM-PF-iNk" secondAttribute="bottom" constant="475" id="0Uv-lo-ct6"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="leading" secondItem="goa-IJ-lA2" secondAttribute="leading" id="41q-QL-NqZ"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" constant="165" id="Di2-7D-vuV"/>
-                            <constraint firstItem="p0g-KZ-cZn" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="37" id="E8a-SD-yXZ"/>
+                            <constraint firstItem="p0g-KZ-cZn" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="20" id="E8a-SD-yXZ"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="hZl-pg-Wrx" secondAttribute="bottom" constant="50" id="Lb8-DZ-68N"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="MuM-PF-iNk" secondAttribute="trailing" constant="68" id="QjD-3a-KqH"/>
-                            <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="p0g-KZ-cZn" secondAttribute="bottom" constant="580" id="Tni-DG-n8i"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="165" id="Vai-2V-Tw3"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="goa-IJ-lA2" secondAttribute="bottom" constant="319" id="WiF-IY-trU"/>
                             <constraint firstItem="MuM-PF-iNk" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="44" id="c1H-15-STO"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" id="dty-Av-cZr"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="height" secondItem="goa-IJ-lA2" secondAttribute="height" id="gMc-1h-89S"/>
-                            <constraint firstItem="MuM-PF-iNk" firstAttribute="leading" secondItem="p0g-KZ-cZn" secondAttribute="trailing" constant="6" id="gcE-DQ-Byu"/>
                             <constraint firstItem="p0g-KZ-cZn" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="15" id="nRI-Zb-8c7"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="MuM-PF-iNk" secondAttribute="bottom" constant="126" id="of3-ew-zAI"/>
                             <constraint firstItem="MuM-PF-iNk" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="67" id="tno-z4-RAT"/>
@@ -230,6 +244,7 @@
                     <connections>
                         <outlet property="doneLabel" destination="hZl-pg-Wrx" id="rVQ-90-AwQ"/>
                         <outlet property="fickerLabel" destination="goa-IJ-lA2" id="oGC-vs-f43"/>
+                        <outlet property="flickerBtn" destination="goa-IJ-lA2" id="Naf-un-UTu"/>
                         <outlet property="imageView" destination="MuM-PF-iNk" id="fuA-d6-LcE"/>
                     </connections>
                 </viewController>
@@ -258,5 +273,6 @@
     </scenes>
     <resources>
         <image name="Silkroad" width="960" height="768"/>
+        <image name="back" width="715" height="715"/>
     </resources>
 </document>

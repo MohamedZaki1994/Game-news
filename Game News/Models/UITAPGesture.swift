@@ -11,4 +11,5 @@ import UIKit
 class UITAPGesture: UITapGestureRecognizer {
     var tapedView: CustomView?
     var isOpened: Bool?
+    var index: Int?
 }

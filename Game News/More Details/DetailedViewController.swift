@@ -8,19 +8,25 @@
 
 import UIKit
 
-class DetailedViewController: UIViewController {
+protocol TopBardProtocol {
+    func dismiss()
+}
+
+class DetailedViewController: UIViewController, TopBardProtocol{
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var doneLabel: UILabel!
 
     @IBOutlet weak var fickerLabel: UIButton!
+
+    @IBOutlet weak var flickerBtn: UIButton!
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func flicker(_ sender: Any) {
         let shadowView = UIView(frame: self.fickerLabel.frame)
-        let animator = UIViewPropertyAnimator(duration: 1, curve: .easeIn) {
+        let animator = UIViewPropertyAnimator(duration: 1, dampingRatio: 0.9) {
 
             UIView.animateKeyframes(withDuration: 10, delay: 0, animations: {
 
@@ -38,20 +44,36 @@ class DetailedViewController: UIViewController {
             }, completion: { (_) in
                 shadowView.removeFromSuperview()
                 self.doneLabel.isHidden = false
+                DispatchQueue.main.async {
+                    self.doneLabel.layer.borderWidth = 8
+                    let basicAnimation = CABasicAnimation(keyPath: "borderWidth")
+                    basicAnimation.duration = 2
+                    basicAnimation.fromValue = 2
+                    basicAnimation.toValue = 8
+                    basicAnimation.repeatCount = .infinity
+                    basicAnimation.isRemovedOnCompletion = false
+                    self.doneLabel.layer.add(basicAnimation, forKey: nil)
+                    self.view.layoutIfNeeded()
+                }
             })
         }
         animator.startAnimation()
+
     }
     let realView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         doneLabel.isHidden = true
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
+    }
+
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
     }
 
 }

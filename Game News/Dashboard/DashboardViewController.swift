@@ -19,7 +19,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     var timer: Timer?
     var arrowIcon = [UIImageView]()
     var dashboardInteractor = DashboardInteractor()
-    var imageArray = [String]()
+    var imageArray: [String] = []
+    var detailedText: [String] = []
     var viewModel = DashboardViewModel()
     var viewHeightCollapsed: NSLayoutConstraint?
     var viewHeightExtended: NSLayoutConstraint?
@@ -43,17 +44,16 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let storyboard =  UIStoryboard(name: "Main", bundle: nil)
-        let topBarVC = storyboard.instantiateViewController(withIdentifier: "TopBarViewController")
-        addChild(topBarVC)
-        topBarVC.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
-        view.addSubview(topBarVC.view)
-        topBarVC.didMove(toParent: self)
         dashboardInteractor.getData { (model) in
-            guard let games = model.names else {
+            guard let games = model.games else {
                 return
             }
-            imageArray = games
+            imageArray = games.compactMap({ game in
+                return game.name
+            })
+            detailedText = games.compactMap({ game in
+                return game.text
+            })
             pageController.numberOfPages = imageArray.count
             self.collectionView.reloadData()
         }
@@ -131,6 +131,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             let tap = UITAPGesture(target: self, action: #selector(handleAction))
             tap.tapedView = view
             tap.isOpened = false
+            tap.index = imj.offset
             tap.tapedView?.icon = arrowIcon[imj.offset]
             stackView.addArrangedSubview(view)
             imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
@@ -162,7 +163,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     @objc func handleAction(sender: UITAPGesture) {
         guard let tapedView = sender.tapedView,
         let isOpened = sender.isOpened,
-        let icon = sender.tapedView?.icon else {return}
+        let icon = sender.tapedView?.icon,
+        let index = sender.index else {return}
         if isOpened {
             tapedView.more?.alpha = 0.25
             UIView.animate(withDuration: 1) {
@@ -178,7 +180,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             tapedView.more?.alpha = 0.25
             UIView.animate(withDuration: 1) {
                 tapedView.more?.alpha = 1
-                tapedView.more?.text = "here you are so you can go to this direction and try to find me"
+                tapedView.more?.text = self.detailedText[index]//"here you are so you can go to this direction and try to find me"
                 tapedView.viewHeightCollapsed?.isActive = false
                 tapedView.viewHeightExtended = tapedView.heightAnchor.constraint(equalToConstant: 200)
                 tapedView.viewHeightExtended?.isActive = true

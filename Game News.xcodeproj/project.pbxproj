@@ -100,6 +100,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		35E6B10022B78154007C22DF /* Offline Data */ = {
+			isa = PBXGroup;
+			children = (
+				35EB12FE220DC72D00D91BD6 /* head.json */,
+			);
+			path = "Offline Data";
+			sourceTree = "<group>";
+		};
 		35EB12E0220DC45800D91BD6 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +129,7 @@
 		35EB12EB220DC45800D91BD6 /* Game News */ = {
 			isa = PBXGroup;
 			children = (
+				35E6B10022B78154007C22DF /* Offline Data */,
 				35FAE0A8222ACBE30049D52E /* More Details */,
 				35E338B322218E3E000A555C /* Dashboard */,
 				35E5857C22206AEB00E9A4D3 /* Views */,
@@ -133,7 +142,6 @@
 				35EB12F3220DC45800D91BD6 /* Assets.xcassets */,
 				35EB12F5220DC45800D91BD6 /* LaunchScreen.storyboard */,
 				35EB12F8220DC45800D91BD6 /* Info.plist */,
-				35EB12FE220DC72D00D91BD6 /* head.json */,
 				35EB1302220DFA2500D91BD6 /* CollectionViewCell.swift */,
 			);
 			path = "Game News";

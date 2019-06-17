@@ -13,4 +13,5 @@ class DashboardModel: Codable{
 }
 class Games: Codable {
     var name: String?
+    var text: String?
 }
