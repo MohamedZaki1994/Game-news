@@ -86,12 +86,6 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         flickerBtn.layer.add(animation, forKey: nil)
 
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 100)
-        collectionView.collectionViewLayout = layout
-    }
 
     func dismiss() {
         dismiss(animated: true, completion: nil)
@@ -105,7 +99,7 @@ extension DetailedViewController: UICollectionViewDelegate {
 
 extension DetailedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 50
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -117,3 +111,8 @@ extension DetailedViewController: UICollectionViewDataSource {
 
 
 }
+//extension DetailedViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 100, height: 150)
+//    }
+//}

@@ -16,6 +16,7 @@
 		35E5857E22206AFB00E9A4D3 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857D22206AFB00E9A4D3 /* CustomView.swift */; };
 		35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */; };
 		35E5858222206BD200E9A4D3 /* RootNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5858122206BD200E9A4D3 /* RootNavigation.swift */; };
+		35E5FC0922BFA02B0050CCDC /* DetailedCollectionViewlayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5FC0822BFA02B0050CCDC /* DetailedCollectionViewlayout.swift */; };
 		35E6B10922B7D9D5007C22DF /* DetailedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6B10722B7D9D5007C22DF /* DetailedCollectionViewCell.swift */; };
 		35E6B10A22B7D9D5007C22DF /* DetailedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E6B10822B7D9D5007C22DF /* DetailedCollectionViewCell.xib */; };
 		35EB12ED220DC45800D91BD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB12EC220DC45800D91BD6 /* AppDelegate.swift */; };
@@ -39,6 +40,7 @@
 		35E5857D22206AFB00E9A4D3 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		35E5858122206BD200E9A4D3 /* RootNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigation.swift; sourceTree = "<group>"; };
+		35E5FC0822BFA02B0050CCDC /* DetailedCollectionViewlayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCollectionViewlayout.swift; sourceTree = "<group>"; };
 		35E6B10722B7D9D5007C22DF /* DetailedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCollectionViewCell.swift; sourceTree = "<group>"; };
 		35E6B10822B7D9D5007C22DF /* DetailedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedCollectionViewCell.xib; sourceTree = "<group>"; };
 		35EB12E9220DC45800D91BD6 /* Game News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		35E5FC0722BFA0040050CCDC /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				35E5FC0822BFA02B0050CCDC /* DetailedCollectionViewlayout.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
 		35E6B10022B78154007C22DF /* Offline Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +143,7 @@
 		35EB12EB220DC45800D91BD6 /* Game News */ = {
 			isa = PBXGroup;
 			children = (
+				35E5FC0722BFA0040050CCDC /* Layouts */,
 				35E6B10022B78154007C22DF /* Offline Data */,
 				35FAE0A8222ACBE30049D52E /* More Details */,
 				35E338B322218E3E000A555C /* Dashboard */,
@@ -279,6 +290,7 @@
 				35E5858222206BD200E9A4D3 /* RootNavigation.swift in Sources */,
 				35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */,
 				35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */,
+				35E5FC0922BFA02B0050CCDC /* DetailedCollectionViewlayout.swift in Sources */,
 				35EB12ED220DC45800D91BD6 /* AppDelegate.swift in Sources */,
 				35E4CD682232EB0B00B571DB /* DashboardViewModel.swift in Sources */,
 				35EB1303220DFA2500D91BD6 /* DashboardCollectionViewCell.swift in Sources */,
