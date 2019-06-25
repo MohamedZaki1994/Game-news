@@ -70,7 +70,6 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         doneLabel.isHidden = true
         let xib = UINib(nibName: "DetailedCollectionViewCell", bundle: Bundle.main)
         collectionView.register(xib, forCellWithReuseIdentifier: "cell")
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -84,6 +83,7 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         animation.toValue = [flickerBtn.frame.midX,flickerBtn.frame.midY]
         animation.beginTime = CACurrentMediaTime() + 2
         flickerBtn.layer.add(animation, forKey: nil)
+        animateBalloon()
 
     }
 
@@ -91,6 +91,32 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         dismiss(animated: true, completion: nil)
     }
 
+    func animateBalloon() {
+        let balloon = CALayer()
+        balloon.contents = UIImage(named: "balloon")?.cgImage
+        balloon.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        view.layer.insertSublayer(balloon, at: 0)
+
+        let expandAnimation = CABasicAnimation(keyPath: "position")
+        expandAnimation.fromValue = [0,0]
+        expandAnimation.toValue = [view.frame.width,view.frame.height/2]
+        expandAnimation.duration = 10
+        expandAnimation.fillMode = .backwards
+        expandAnimation.isRemovedOnCompletion = false
+
+        let expandAnimation1 = CABasicAnimation(keyPath: "position")
+        expandAnimation1.fromValue = [view.frame.width,view.frame.height/2]
+        expandAnimation1.toValue = [0,view.frame.height]
+        expandAnimation1.duration = 10
+        expandAnimation1.beginTime = 10
+        expandAnimation1.isRemovedOnCompletion = false
+
+        let animationGroup = CAAnimationGroup()
+        animationGroup.animations = [expandAnimation, expandAnimation1]
+        animationGroup.duration = 20
+        animationGroup.repeatCount = .infinity
+        balloon.add(animationGroup, forKey: nil)
+    }
 }
 
 extension DetailedViewController: UICollectionViewDelegate {

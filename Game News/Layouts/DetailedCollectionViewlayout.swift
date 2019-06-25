@@ -51,12 +51,12 @@ class DetailedCollectionViewlayout: UICollectionViewFlowLayout {
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
 
         // 3
-
+        prepareHeaderAttributes(section: 0, collectionView: collectionView, headerYOffset: 10)
         for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
 
             let indexPath = IndexPath(item: item, section: 0)
             // 4
-          prepareHeaderAttributes(section: 0, collectionView: collectionView, headerYOffset: 10)
+
 
             let photoHeight = CGFloat.random(in: 20 ..< 150)
             let height = cellPadding * 2 + photoHeight
