@@ -230,13 +230,31 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v1X-tj-gt5">
                                 <rect key="frame" x="10" y="406" width="355" height="251"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eHK-Af-W3F" customClass="DetailedCollectionViewlayout" customModule="Game_News" customModuleProvider="target">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="eHK-Af-W3F" customClass="DetailedCollectionViewlayout" customModule="Game_News" customModuleProvider="target">
                                     <size key="itemSize" width="92" height="64"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="100" height="80"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="z6z-4a-e56" customClass="DetailedCollectionReusableView" customModule="Game_News" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gw2" translatesAutoresizingMaskIntoConstraints="NO" id="jpU-W1-dm2">
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="80"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="jpU-W1-dm2" firstAttribute="top" secondItem="z6z-4a-e56" secondAttribute="top" id="ELY-Di-sZE"/>
+                                        <constraint firstAttribute="trailing" secondItem="jpU-W1-dm2" secondAttribute="trailing" id="SW2-WQ-Qlw"/>
+                                        <constraint firstAttribute="bottom" secondItem="jpU-W1-dm2" secondAttribute="bottom" id="Vn4-XA-1oH"/>
+                                        <constraint firstItem="jpU-W1-dm2" firstAttribute="leading" secondItem="z6z-4a-e56" secondAttribute="leading" id="fHM-Bb-sdN"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="imageView" destination="jpU-W1-dm2" id="y5Q-hk-eiI"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="CKK-k8-dup" id="x0g-rU-e5h"/>
                                     <outlet property="delegate" destination="CKK-k8-dup" id="xWv-mL-FYH"/>
@@ -300,5 +318,6 @@
     <resources>
         <image name="Silkroad" width="960" height="768"/>
         <image name="back" width="715" height="715"/>
+        <image name="gw2" width="290" height="200"/>
     </resources>
 </document>
