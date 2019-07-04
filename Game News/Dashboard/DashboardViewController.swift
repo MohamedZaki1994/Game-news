@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DashboardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var container: UIView!
+
+    @IBAction func myFavorite(_ sender: Any) {
+        let favoriteVC = viewControllerFromStroyboard(id: "FavoriteViewController") as! FavoriteViewController
+        present(favoriteVC, animated: true, completion: nil)
+    }
     let animatorobj = animator()
     var row = 0
     var lastContentOffsetX: CGFloat = 0.0

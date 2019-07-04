@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol TopBardProtocol {
     func dismiss()
@@ -61,12 +62,34 @@ class DetailedViewController: UIViewController, TopBardProtocol{
             })
         }
         animator.startAnimation()
-
+        ///////////// this for adding a new property or renaming an existing one ///////////////
+//        let config = Realm.Configuration(
+//            // Set the new schema version. This must be greater than the previously used
+//            // version (if you've never set a schema version before, the version is 0).
+//            schemaVersion: 1,
+//            migrationBlock: { migration, oldSchemaVersion in
+//                if oldSchemaVersion < 1 {
+//                    // Apply any necessary migration logic here.
+//                    migration.enumerateObjects(ofType: Favorite.className()) { (_, newText) in
+//                        newText?["text2"] = ""
+//                    }
+//                }
+//        })
+//        Realm.Configuration.defaultConfiguration = config
+        let realm = try! Realm()
+        let object = realm.objects(Favorite.self)
+        try! realm.write {
+            realm.delete(object)
+        }
+        try! realm.write {
+            realm.add(Favorite(name: "GW2", text: "Best"))
+        }
     }
     let realView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         doneLabel.isHidden = true
         let xib = UINib(nibName: "DetailedCollectionViewCell", bundle: Bundle.main)
         collectionView.register(xib, forCellWithReuseIdentifier: "cell")
