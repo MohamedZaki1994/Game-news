@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 class FavoriteViewController: UIViewController {
 
-
     @IBAction func closeButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

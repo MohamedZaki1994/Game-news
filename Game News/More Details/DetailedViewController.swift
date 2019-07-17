@@ -16,13 +16,11 @@ protocol TopBardProtocol {
 class DetailedViewController: UIViewController, TopBardProtocol{
 
 
+    @IBOutlet weak var arrowImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
-
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var doneLabel: UILabel!
-
     @IBOutlet weak var fickerLabel: UIButton!
-
     @IBOutlet weak var flickerBtn: UIButton!
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -43,7 +41,7 @@ class DetailedViewController: UIViewController, TopBardProtocol{
                 })
 
                 UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 1, animations: {
-                    shadowView.transform = CGAffineTransform(translationX: 0, y: -80)
+                    shadowView.transform = CGAffineTransform(translationX: 0, y: -100)
                 })
             }, completion: { (_) in
                 shadowView.removeFromSuperview()
@@ -95,6 +93,14 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         collectionView.register(xib, forCellWithReuseIdentifier: "cell")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        arrowImage.layer.anchorPoint = CGPoint(x: 1, y: 0.5)
+        UIView.animate(withDuration: 8.5) {
+            self.arrowImage.transform = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2) * 0.99)
+        }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         flickerBtn.isHidden = false
@@ -107,6 +113,29 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         animation.beginTime = CACurrentMediaTime() + 2
         flickerBtn.layer.add(animation, forKey: nil)
         animateBalloon()
+
+//        let calayer = CAShapeLayer()
+//        view.layer.addSublayer(calayer)
+//        let bezier = UIBezierPath()
+//        bezier.move(to: CGPoint.zero)
+//        bezier.addLine(to: CGPoint(x: 0, y: -100))
+//        calayer.path = bezier.cgPath
+//        calayer.lineWidth = 50
+//        calayer.position = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+//        calayer.strokeColor = UIColor.blue.cgColor
+//
+//        CATransaction.begin()
+//        let basicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+//        basicAnimation.duration = 2
+//        basicAnimation.fromValue =  0
+//        basicAnimation.toValue = CGFloat.pi
+//        CATransaction.setCompletionBlock {
+//            calayer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY + 100)
+//            calayer.layoutIfNeeded()
+//        }
+//        calayer.layoutIfNeeded()
+//        calayer.add(basicAnimation, forKey: nil)
+//        CATransaction.commit()
 
     }
 

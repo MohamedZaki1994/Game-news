@@ -189,7 +189,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZl-pg-Wrx">
-                                <rect key="frame" x="165" y="238" width="45" height="30"/>
+                                <rect key="frame" x="165" y="213" width="45" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -228,6 +228,13 @@
                                     <outlet property="delegate" destination="CKK-k8-dup" id="xWv-mL-FYH"/>
                                 </connections>
                             </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="gaG-Q7-2UI">
+                                <rect key="frame" x="145" y="245" width="50" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6eg-26-YIN"/>
+                                    <constraint firstAttribute="height" constant="43" id="fag-gR-QAg"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.50936175554277585" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -236,7 +243,8 @@
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="leading" secondItem="goa-IJ-lA2" secondAttribute="leading" id="41q-QL-NqZ"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" constant="165" id="Di2-7D-vuV"/>
                             <constraint firstItem="p0g-KZ-cZn" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="20" id="E8a-SD-yXZ"/>
-                            <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="hZl-pg-Wrx" secondAttribute="bottom" constant="50" id="Lb8-DZ-68N"/>
+                            <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="hZl-pg-Wrx" secondAttribute="bottom" constant="75" id="Lb8-DZ-68N"/>
+                            <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="gaG-Q7-2UI" secondAttribute="bottom" constant="30" id="P4r-Vl-n7E"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="MuM-PF-iNk" secondAttribute="trailing" constant="68" id="QjD-3a-KqH"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="165" id="Vai-2V-Tw3"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="goa-IJ-lA2" secondAttribute="bottom" constant="319" id="WiF-IY-trU"/>
@@ -245,6 +253,7 @@
                             <constraint firstItem="MuM-PF-iNk" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="44" id="c1H-15-STO"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" id="dty-Av-cZr"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="height" secondItem="goa-IJ-lA2" secondAttribute="height" id="gMc-1h-89S"/>
+                            <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="gaG-Q7-2UI" secondAttribute="trailing" constant="180" id="jhl-OA-6UU"/>
                             <constraint firstItem="p0g-KZ-cZn" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="15" id="nRI-Zb-8c7"/>
                             <constraint firstItem="v1X-tj-gt5" firstAttribute="top" secondItem="goa-IJ-lA2" secondAttribute="bottom" constant="58" id="o9F-7O-Vuw"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="MuM-PF-iNk" secondAttribute="bottom" constant="126" id="of3-ew-zAI"/>
@@ -253,6 +262,7 @@
                         <viewLayoutGuide key="safeArea" id="t2M-0h-G6r"/>
                     </view>
                     <connections>
+                        <outlet property="arrowImage" destination="gaG-Q7-2UI" id="2aD-Aw-sfg"/>
                         <outlet property="collectionView" destination="v1X-tj-gt5" id="NiC-5L-iWF"/>
                         <outlet property="doneLabel" destination="hZl-pg-Wrx" id="rVQ-90-AwQ"/>
                         <outlet property="fickerLabel" destination="goa-IJ-lA2" id="oGC-vs-f43"/>
@@ -262,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rae-m4-p3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2806" y="93"/>
+            <point key="canvasLocation" x="2805.5999999999999" y="92.203898050974516"/>
         </scene>
         <!--Favorite View Controller-->
         <scene sceneID="UUl-D3-eO6">

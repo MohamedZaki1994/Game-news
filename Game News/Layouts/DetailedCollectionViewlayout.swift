@@ -58,7 +58,7 @@ class DetailedCollectionViewlayout: UICollectionViewFlowLayout {
             // 4
 
 
-            let photoHeight = CGFloat.random(in: 20 ..< 150)
+            let photoHeight = CGFloat.random(in: 50 ..< 100)
             let height = cellPadding * 2 + photoHeight
             let frame = CGRect(x: xOffset[column], y: yOffset[column] + sectionHeaderHeight, width: columnWidth, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
