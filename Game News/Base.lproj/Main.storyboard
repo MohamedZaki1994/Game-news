@@ -229,9 +229,9 @@
                                 </connections>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="gaG-Q7-2UI">
-                                <rect key="frame" x="145" y="245" width="50" height="43"/>
+                                <rect key="frame" x="130" y="235" width="75" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="6eg-26-YIN"/>
+                                    <constraint firstAttribute="width" constant="75" id="6eg-26-YIN"/>
                                     <constraint firstAttribute="height" constant="43" id="fag-gR-QAg"/>
                                 </constraints>
                             </imageView>
@@ -244,7 +244,7 @@
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" constant="165" id="Di2-7D-vuV"/>
                             <constraint firstItem="p0g-KZ-cZn" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="20" id="E8a-SD-yXZ"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="hZl-pg-Wrx" secondAttribute="bottom" constant="75" id="Lb8-DZ-68N"/>
-                            <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="gaG-Q7-2UI" secondAttribute="bottom" constant="30" id="P4r-Vl-n7E"/>
+                            <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="gaG-Q7-2UI" secondAttribute="bottom" constant="40" id="P4r-Vl-n7E"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="MuM-PF-iNk" secondAttribute="trailing" constant="68" id="QjD-3a-KqH"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="165" id="Vai-2V-Tw3"/>
                             <constraint firstItem="t2M-0h-G6r" firstAttribute="bottom" secondItem="goa-IJ-lA2" secondAttribute="bottom" constant="319" id="WiF-IY-trU"/>
@@ -253,7 +253,7 @@
                             <constraint firstItem="MuM-PF-iNk" firstAttribute="top" secondItem="t2M-0h-G6r" secondAttribute="top" constant="44" id="c1H-15-STO"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="trailing" secondItem="goa-IJ-lA2" secondAttribute="trailing" id="dty-Av-cZr"/>
                             <constraint firstItem="hZl-pg-Wrx" firstAttribute="height" secondItem="goa-IJ-lA2" secondAttribute="height" id="gMc-1h-89S"/>
-                            <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="gaG-Q7-2UI" secondAttribute="trailing" constant="180" id="jhl-OA-6UU"/>
+                            <constraint firstItem="t2M-0h-G6r" firstAttribute="trailing" secondItem="gaG-Q7-2UI" secondAttribute="trailing" constant="170" id="jhl-OA-6UU"/>
                             <constraint firstItem="p0g-KZ-cZn" firstAttribute="leading" secondItem="t2M-0h-G6r" secondAttribute="leading" constant="15" id="nRI-Zb-8c7"/>
                             <constraint firstItem="v1X-tj-gt5" firstAttribute="top" secondItem="goa-IJ-lA2" secondAttribute="bottom" constant="58" id="o9F-7O-Vuw"/>
                             <constraint firstItem="goa-IJ-lA2" firstAttribute="top" secondItem="MuM-PF-iNk" secondAttribute="bottom" constant="126" id="of3-ew-zAI"/>
