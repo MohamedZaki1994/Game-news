@@ -30,6 +30,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     var viewModel = DashboardViewModel()
     var viewHeightCollapsed: NSLayoutConstraint?
     var viewHeightExtended: NSLayoutConstraint?
+    let gradient = CAGradientLayer()
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -87,10 +88,22 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         print(data)
     }
+    fileprivate func gradientBackground() {
+        view.layer.insertSublayer(gradient, at: 0)
+        gradient.bounds = view.bounds
+        gradient.anchorPoint = CGPoint.zero
+        let red = UIColor.red.cgColor
+        let blue = UIColor.blue.cgColor
+        gradient.colors = [blue, red]
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         navigationController?.navigationBar.isHidden = true
+        gradientBackground()
     }
 
     @objc func timerAction() {
@@ -158,6 +171,15 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
+    @IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {
+        guard let recognizerView = recognizer.view else{ return }
+        let translation = recognizer.translation(in: recognizerView)
+        recognizerView.center.x += translation.x
+        recognizerView.center.y += translation.y
+        recognizer.setTranslation(.zero, in: view)
+    }
+
+
     fileprivate func addIcon(_ imj: (offset: Int, element: String), _ view: CustomView) {
         arrowIcon[imj.offset].translatesAutoresizingMaskIntoConstraints = false
         arrowIcon[imj.offset].heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -204,6 +226,10 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             
         }
         vc.transitioningDelegate = self
+       guard let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell else {
+            return
+        }
+        vc.selectedImage = cell.imageView.image
         present(vc, animated: true, completion: nil)
     }
 }

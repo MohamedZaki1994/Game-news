@@ -22,10 +22,24 @@ class DetailedViewController: UIViewController, TopBardProtocol{
     @IBOutlet weak var doneLabel: UILabel!
     @IBOutlet weak var fickerLabel: UIButton!
     @IBOutlet weak var flickerBtn: UIButton!
+    @IBOutlet weak var addFavorite: UIButton!
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    var isFavorite = false
+    var selectedImage: UIImage?
 
+    @IBAction func addFavoriteAction(_ sender: UIButton) {
+        if isFavorite {
+            addFavorite.setImage(UIImage(named: "favorite"), for: .normal)
+            isFavorite = false
+            showAlert(title: "Removed from your favorite List", time: 2)
+        } else {
+            addFavorite.setImage(UIImage(named: "favorite1"), for: .normal)
+            isFavorite = true
+            showAlert(title: "Added to your favorite List", time: 2)
+        }
+    }
     @IBAction func flicker(_ sender: Any) {
         let shadowView = UIView(frame: self.fickerLabel.frame)
         let animator = UIViewPropertyAnimator(duration: 1, dampingRatio: 0.9) {
@@ -83,7 +97,6 @@ class DetailedViewController: UIViewController, TopBardProtocol{
             realm.add(Favorite(name: "GW2", text: "Best"))
         }
     }
-    let realView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +108,7 @@ class DetailedViewController: UIViewController, TopBardProtocol{
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        imageView.image = selectedImage
         arrowImage.layer.anchorPoint = CGPoint(x: 1, y: 0.5)
         UIView.animate(withDuration: 8.5) {
             self.arrowImage.transform = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2) * 0.99)
@@ -113,30 +127,6 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         animation.beginTime = CACurrentMediaTime() + 2
         flickerBtn.layer.add(animation, forKey: nil)
         animateBalloon()
-
-//        let calayer = CAShapeLayer()
-//        view.layer.addSublayer(calayer)
-//        let bezier = UIBezierPath()
-//        bezier.move(to: CGPoint.zero)
-//        bezier.addLine(to: CGPoint(x: 0, y: -100))
-//        calayer.path = bezier.cgPath
-//        calayer.lineWidth = 50
-//        calayer.position = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
-//        calayer.strokeColor = UIColor.blue.cgColor
-//
-//        CATransaction.begin()
-//        let basicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-//        basicAnimation.duration = 2
-//        basicAnimation.fromValue =  0
-//        basicAnimation.toValue = CGFloat.pi
-//        CATransaction.setCompletionBlock {
-//            calayer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY + 100)
-//            calayer.layoutIfNeeded()
-//        }
-//        calayer.layoutIfNeeded()
-//        calayer.add(basicAnimation, forKey: nil)
-//        CATransaction.commit()
-
     }
 
     func dismiss() {
@@ -169,10 +159,6 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         animationGroup.repeatCount = .infinity
         balloon.add(animationGroup, forKey: nil)
     }
-}
-
-extension DetailedViewController: UICollectionViewDelegate {
-
 }
 
 extension DetailedViewController: UICollectionViewDataSource {
