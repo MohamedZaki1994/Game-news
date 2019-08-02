@@ -40,6 +40,8 @@ class DetailedViewController: UIViewController, TopBardProtocol{
             showAlert(title: "Added to your favorite List", time: 2)
         }
     }
+
+    
     @IBAction func flicker(_ sender: Any) {
         let shadowView = UIView(frame: self.fickerLabel.frame)
         let animator = UIViewPropertyAnimator(duration: 1, dampingRatio: 0.9) {

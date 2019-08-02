@@ -31,10 +31,30 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     var viewHeightCollapsed: NSLayoutConstraint?
     var viewHeightExtended: NSLayoutConstraint?
     let gradient = CAGradientLayer()
+    var isSideMenu = false
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
 
-
+    @IBAction func sideMenuAction(_ sender: Any) {
+        if isSideMenu {
+            for viewContoller in children where viewContoller is SideMenuViewController{
+                viewContoller.willMove(toParent: nil)
+                viewContoller.view.removeFromSuperview()
+                viewContoller.removeFromParent()
+            }
+            isSideMenu = false
+        } else {
+            let sideMenuViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SideMenuViewController")
+            addChild(sideMenuViewController)
+            view.addSubview(sideMenuViewController.view)
+            sideMenuViewController.didMove(toParent: self)
+            sideMenuViewController.view.frame = CGRect(x: view.frame.maxX, y: 100, width: view.frame.midX, height: view.frame.maxY)
+            UIView.animate(withDuration: 3) {
+                sideMenuViewController.view.frame = CGRect(x: self.view.frame.midX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
+            }
+            isSideMenu = true
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
     }

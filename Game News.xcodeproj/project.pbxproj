@@ -21,6 +21,7 @@
 		35E6B10922B7D9D5007C22DF /* DetailedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6B10722B7D9D5007C22DF /* DetailedCollectionViewCell.swift */; };
 		35E6B10A22B7D9D5007C22DF /* DetailedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E6B10822B7D9D5007C22DF /* DetailedCollectionViewCell.xib */; };
 		35E922E022C227CB00DDDCD3 /* DetailedCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E922DF22C227CB00DDDCD3 /* DetailedCollectionReusableView.swift */; };
+		35E96F0922F451EC00252676 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E96F0822F451EB00252676 /* SideMenuViewController.swift */; };
 		35EB12ED220DC45800D91BD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB12EC220DC45800D91BD6 /* AppDelegate.swift */; };
 		35EB12EF220DC45800D91BD6 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB12EE220DC45800D91BD6 /* DashboardViewController.swift */; };
 		35EB12F2220DC45800D91BD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35EB12F0220DC45800D91BD6 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		35E6B10722B7D9D5007C22DF /* DetailedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCollectionViewCell.swift; sourceTree = "<group>"; };
 		35E6B10822B7D9D5007C22DF /* DetailedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedCollectionViewCell.xib; sourceTree = "<group>"; };
 		35E922DF22C227CB00DDDCD3 /* DetailedCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCollectionReusableView.swift; sourceTree = "<group>"; };
+		35E96F0822F451EB00252676 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		35EB12E9220DC45800D91BD6 /* Game News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35EB12EC220DC45800D91BD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35EB12EE220DC45800D91BD6 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				35EB12F3220DC45800D91BD6 /* Assets.xcassets */,
 				35EB12F5220DC45800D91BD6 /* LaunchScreen.storyboard */,
 				35EB12F8220DC45800D91BD6 /* Info.plist */,
+				35E96F0822F451EB00252676 /* SideMenuViewController.swift */,
 			);
 			path = "Game News";
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				35EB12EF220DC45800D91BD6 /* DashboardViewController.swift in Sources */,
 				35E922E022C227CB00DDDCD3 /* DetailedCollectionReusableView.swift in Sources */,
 				35E338B52221905E000A555C /* DashboardModel.swift in Sources */,
+				35E96F0922F451EC00252676 /* SideMenuViewController.swift in Sources */,
 				35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */,
 				35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */,
 				35E3126322CE2F28006568E7 /* ViewController+Navigation.swift in Sources */,

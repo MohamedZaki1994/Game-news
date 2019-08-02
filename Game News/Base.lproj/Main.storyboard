@@ -137,21 +137,35 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFD-jA-Wua">
-                                <rect key="frame" x="314" y="74" width="46" height="30"/>
+                                <rect key="frame" x="229" y="74" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="myFavorite:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DGS-a1-uMb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RL-1y-erC">
+                                <rect key="frame" x="329" y="73" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="BHF-Tb-9Km"/>
+                                    <constraint firstAttribute="height" constant="30" id="nMe-N9-xXd"/>
+                                </constraints>
+                                <state key="normal" image="sideMenu"/>
+                                <connections>
+                                    <action selector="sideMenuAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wn0-bv-DPy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.25879135727882385" green="0.2588421106338501" blue="0.25878816843032837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9RL-1y-erC" secondAttribute="trailing" constant="16" id="OaY-hh-vUL"/>
                             <constraint firstItem="BP3-5u-pg1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="U0K-Pe-5Hr"/>
                             <constraint firstAttribute="bottom" secondItem="BP3-5u-pg1" secondAttribute="bottom" id="UoK-ns-0fA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qFD-jA-Wua" secondAttribute="trailing" constant="15" id="cfz-1x-Oyf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qFD-jA-Wua" secondAttribute="trailing" constant="100" id="cfz-1x-Oyf"/>
                             <constraint firstItem="qFD-jA-Wua" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="lAo-YD-kEj"/>
                             <constraint firstItem="BP3-5u-pg1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="qJp-4q-hCe"/>
                             <constraint firstItem="BP3-5u-pg1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u28-uW-hYP"/>
+                            <constraint firstItem="9RL-1y-erC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="v5I-SR-gst"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -335,6 +349,21 @@
             </objects>
             <point key="canvasLocation" x="3681" y="110"/>
         </scene>
+        <!--Side Menu View Controller-->
+        <scene sceneID="Baz-c6-HCY">
+            <objects>
+                <viewController storyboardIdentifier="SideMenuViewController" id="3wO-Kh-kMi" customClass="SideMenuViewController" customModule="Game_News" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QD1-D6-s6c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8v4-Mc-m5F"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PmI-mo-q74" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4568" y="108"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="PDM-Z2-Gh6">
             <objects>
@@ -359,5 +388,6 @@
         <image name="back" width="715" height="715"/>
         <image name="favorite" width="256" height="256"/>
         <image name="gw2" width="290" height="200"/>
+        <image name="sideMenu" width="512" height="512"/>
     </resources>
 </document>
