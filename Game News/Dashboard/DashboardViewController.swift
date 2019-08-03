@@ -10,17 +10,7 @@ import UIKit
 import RealmSwift
 
 class DashboardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    @IBOutlet weak var navigation: UINavigationItem!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var container: UIView!
 
-    @IBAction func myFavorite(_ sender: Any) {
-        guard let favoriteVC = factory.makeViewController(with: .FavoriteViewController) as? FavoriteViewController else {
-            return
-        }
-        present(favoriteVC, animated: true, completion: nil)
-    }
     let animatorobj = animator()
     var row = 0
     var lastContentOffsetX: CGFloat = 0.0
@@ -35,22 +25,23 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     let gradient = CAGradientLayer()
     var isSideMenu = false
     let factory = AppFactory()
+    @IBOutlet weak var navigation: UINavigationItem!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBAction func myFavorite(_ sender: Any) {
+        guard let favoriteVC = factory.makeViewController(with: .FavoriteViewController) as? FavoriteViewController else {
+            return
+        }
+        present(favoriteVC, animated: true, completion: nil)
+    }
     @IBAction func sideMenuAction(_ sender: Any) {
         if isSideMenu {
-            for viewContoller in children where viewContoller is SideMenuViewController{
-                viewContoller.willMove(toParent: nil)
-                viewContoller.view.removeFromSuperview()
-                viewContoller.removeFromParent()
-            }
+            unEmbed(child: SideMenuViewController.self)
             isSideMenu = false
         } else {
             let sideMenuViewController = factory.makeViewController(with: .SideMenuViewController)
-            addChild(sideMenuViewController)
-            view.addSubview(sideMenuViewController.view)
-            sideMenuViewController.didMove(toParent: self)
+            embed(child: sideMenuViewController)
             sideMenuViewController.view.frame = CGRect(x: view.frame.maxX, y: 100, width: view.frame.midX, height: view.frame.maxY)
             UIView.animate(withDuration: 2) {
                 sideMenuViewController.view.frame = CGRect(x: self.view.frame.midX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
@@ -253,36 +244,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         vc.selectedImage = cell.imageView.image
         present(vc, animated: true, completion: nil)
-    }
-}
-class animator: NSObject, UIViewControllerAnimatedTransitioning {
-    var flag = false
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0
-    }
-
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let containerView = transitionContext.containerView
-            guard let toView = transitionContext.view(forKey: .to) else {return}
-        if flag {
-            toView.transform = CGAffineTransform(scaleX: -0.1, y: -0.1)
-            UIView.animate(withDuration: 0.5, animations: {
-                toView.transform = .identity
-            }) { (_) in
-                transitionContext.completeTransition(true)
-            }
-            containerView.addSubview(toView)
-        } else {
-            guard let fromView = transitionContext.view(forKey: .from) else {return}
-            fromView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            UIView.animate(withDuration: 0.5, animations: {
-                fromView.transform = CGAffineTransform(scaleX: -0.1, y: -0.1)
-            }) { (_) in
-                transitionContext.completeTransition(true)
-            }
-            containerView.addSubview(toView)
-            containerView.bringSubviewToFront(fromView)
-        }
     }
 }
 extension DashboardViewController: UIViewControllerTransitioningDelegate {

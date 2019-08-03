@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3518E53B22F5976A0097FB09 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518E53A22F5976A0097FB09 /* AppFactory.swift */; };
+		3518E53D22F59BB70097FB09 /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518E53C22F59BB70097FB09 /* AnimationTransition.swift */; };
+		3518E53F22F59C490097FB09 /* ViewController+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518E53E22F59C490097FB09 /* ViewController+Embed.swift */; };
 		35E3126022CE2E20006568E7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3125F22CE2E20006568E7 /* FavoriteViewController.swift */; };
 		35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E338B122218E35000A555C /* DashboardInteractor.swift */; };
 		35E338B52221905E000A555C /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E338B42221905E000A555C /* DashboardModel.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		3518E53A22F5976A0097FB09 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
+		3518E53C22F59BB70097FB09 /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
+		3518E53E22F59C490097FB09 /* ViewController+Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Embed.swift"; sourceTree = "<group>"; };
 		35E3125F22CE2E20006568E7 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		35E338B122218E35000A555C /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
 		35E338B42221905E000A555C /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				35EBD33022F32183004AAD65 /* ViewController+Alert.swift */,
+				3518E53E22F59C490097FB09 /* ViewController+Embed.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				35EB12F8220DC45800D91BD6 /* Info.plist */,
 				35E96F0822F451EB00252676 /* SideMenuViewController.swift */,
 				3518E53A22F5976A0097FB09 /* AppFactory.swift */,
+				3518E53C22F59BB70097FB09 /* AnimationTransition.swift */,
 			);
 			path = "Game News";
 			sourceTree = "<group>";
@@ -330,6 +336,8 @@
 				35E922E022C227CB00DDDCD3 /* DetailedCollectionReusableView.swift in Sources */,
 				35E338B52221905E000A555C /* DashboardModel.swift in Sources */,
 				35E96F0922F451EC00252676 /* SideMenuViewController.swift in Sources */,
+				3518E53D22F59BB70097FB09 /* AnimationTransition.swift in Sources */,
+				3518E53F22F59C490097FB09 /* ViewController+Embed.swift in Sources */,
 				35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */,
 				35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */,
 				3518E53B22F5976A0097FB09 /* AppFactory.swift in Sources */,
