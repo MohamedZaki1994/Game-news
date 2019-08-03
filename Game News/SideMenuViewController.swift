@@ -7,9 +7,14 @@
 //
 
 import UIKit
-
+protocol SideMenuActionProtocol {
+   func close()
+}
 class SideMenuViewController: UIViewController {
-
+    var delegate: SideMenuActionProtocol?
+    @IBAction func closeButton(_ sender: Any) {
+        delegate?.close()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

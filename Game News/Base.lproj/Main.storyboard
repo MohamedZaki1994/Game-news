@@ -356,13 +356,30 @@
                     <view key="view" contentMode="scaleToFill" id="QD1-D6-s6c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwY-1M-hjU">
+                                <rect key="frame" x="335" y="30" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="7EJ-tz-8C1"/>
+                                    <constraint firstAttribute="width" constant="20" id="XWq-GN-G4G"/>
+                                </constraints>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="closeButton:" destination="3wO-Kh-kMi" eventType="touchUpInside" id="FKY-Io-Rmv"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mwY-1M-hjU" firstAttribute="top" secondItem="8v4-Mc-m5F" secondAttribute="top" constant="10" id="G7E-2d-SJi"/>
+                            <constraint firstItem="8v4-Mc-m5F" firstAttribute="trailing" secondItem="mwY-1M-hjU" secondAttribute="trailing" constant="20" id="Vbo-4O-mWa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8v4-Mc-m5F"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PmI-mo-q74" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4568" y="108"/>
+            <point key="canvasLocation" x="4567.1999999999998" y="107.49625187406298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PDM-Z2-Gh6">
@@ -386,6 +403,7 @@
     <resources>
         <image name="arrowDown" width="2000" height="2824"/>
         <image name="back" width="715" height="715"/>
+        <image name="close" width="285.7674560546875" height="285.7674560546875"/>
         <image name="favorite" width="256" height="256"/>
         <image name="gw2" width="290" height="200"/>
         <image name="sideMenu" width="512" height="512"/>

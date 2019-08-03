@@ -35,3 +35,17 @@ extension DashboardViewController: UIScrollViewDelegate {
         lastContentOffsetX = scrollView.contentOffset.x
     }
 }
+
+extension DashboardViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = factory.makeViewController(with: .DetailedViewController) as? DetailedViewController else {
+            return
+        }
+        vc.transitioningDelegate = self
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell else {
+            return
+        }
+        vc.selectedImage = cell.imageView.image
+        present(vc, animated: true, completion: nil)
+    }
+}

@@ -20,6 +20,7 @@
 		35E5857E22206AFB00E9A4D3 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857D22206AFB00E9A4D3 /* CustomView.swift */; };
 		35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */; };
 		35E5FC0922BFA02B0050CCDC /* DetailedCollectionViewlayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5FC0822BFA02B0050CCDC /* DetailedCollectionViewlayout.swift */; };
+		35E6314622F5D82300A0DFC3 /* DashboardViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6314522F5D82300A0DFC3 /* DashboardViewController+Delegate.swift */; };
 		35E6B10922B7D9D5007C22DF /* DetailedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6B10722B7D9D5007C22DF /* DetailedCollectionViewCell.swift */; };
 		35E6B10A22B7D9D5007C22DF /* DetailedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E6B10822B7D9D5007C22DF /* DetailedCollectionViewCell.xib */; };
 		35E922E022C227CB00DDDCD3 /* DetailedCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E922DF22C227CB00DDDCD3 /* DetailedCollectionReusableView.swift */; };
@@ -51,6 +52,7 @@
 		35E5857D22206AFB00E9A4D3 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		35E5FC0822BFA02B0050CCDC /* DetailedCollectionViewlayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCollectionViewlayout.swift; sourceTree = "<group>"; };
+		35E6314522F5D82300A0DFC3 /* DashboardViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+Delegate.swift"; sourceTree = "<group>"; };
 		35E6B10722B7D9D5007C22DF /* DetailedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCollectionViewCell.swift; sourceTree = "<group>"; };
 		35E6B10822B7D9D5007C22DF /* DetailedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedCollectionViewCell.xib; sourceTree = "<group>"; };
 		35E922DF22C227CB00DDDCD3 /* DetailedCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				35E338B122218E35000A555C /* DashboardInteractor.swift */,
 				35EB12EE220DC45800D91BD6 /* DashboardViewController.swift */,
+				35E6314522F5D82300A0DFC3 /* DashboardViewController+Delegate.swift */,
 				35E5857F22206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift */,
 				35E4CD672232EB0B00B571DB /* DashboardViewModel.swift */,
 			);
@@ -339,6 +342,7 @@
 				3518E53D22F59BB70097FB09 /* AnimationTransition.swift in Sources */,
 				3518E53F22F59C490097FB09 /* ViewController+Embed.swift in Sources */,
 				35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */,
+				35E6314622F5D82300A0DFC3 /* DashboardViewController+Delegate.swift in Sources */,
 				35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */,
 				3518E53B22F5976A0097FB09 /* AppFactory.swift in Sources */,
 				35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */,

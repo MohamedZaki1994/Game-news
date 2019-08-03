@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class DashboardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class DashboardViewController: UIViewController, UICollectionViewDataSource {
 
     let animatorobj = animator()
     var row = 0
@@ -25,6 +25,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     let gradient = CAGradientLayer()
     var isSideMenu = false
     let factory = AppFactory()
+    var sideMenu: SideMenuViewController?
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var pageController: UIPageControl!
@@ -35,17 +36,33 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         present(favoriteVC, animated: true, completion: nil)
     }
+
+    func closeSideMenu() {
+        UIView.animate(withDuration: 1, animations: {
+            self.sideMenu?.view.frame = CGRect(x: self.view.frame.maxX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
+        }) { [weak self] (_) in
+            self?.unEmbed(child: SideMenuViewController.self)
+        }
+    }
+
+    func openSideMenu() {
+        let sideMenuViewController = factory.makeViewController(with: .SideMenuViewController)
+        sideMenu = sideMenuViewController as? SideMenuViewController
+        sideMenu?.delegate = self
+        embed(child: sideMenuViewController)
+        sideMenuViewController.view.frame = CGRect(x: view.frame.maxX, y: 100, width: view.frame.midX, height: view.frame.maxY)
+        UIView.animate(withDuration: 1) {
+            sideMenuViewController.view.frame = CGRect(x: self.view.frame.midX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
+
+        }
+    }
+
     @IBAction func sideMenuAction(_ sender: Any) {
         if isSideMenu {
-            unEmbed(child: SideMenuViewController.self)
+            closeSideMenu()
             isSideMenu = false
         } else {
-            let sideMenuViewController = factory.makeViewController(with: .SideMenuViewController)
-            embed(child: sideMenuViewController)
-            sideMenuViewController.view.frame = CGRect(x: view.frame.maxX, y: 100, width: view.frame.midX, height: view.frame.maxY)
-            UIView.animate(withDuration: 2) {
-                sideMenuViewController.view.frame = CGRect(x: self.view.frame.midX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
-            }
+            openSideMenu()
             isSideMenu = true
         }
     }
@@ -193,7 +210,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         recognizer.setTranslation(.zero, in: view)
     }
 
-
     fileprivate func addIcon(_ imj: (offset: Int, element: String), _ view: CustomView) {
         arrowIcon[imj.offset].translatesAutoresizingMaskIntoConstraints = false
         arrowIcon[imj.offset].heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -230,29 +246,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 icon.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
                 self.view.layoutIfNeeded()
             }
-            
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = factory.makeViewController(with: .DetailedViewController) as? DetailedViewController else {
-            return
-        }
-        vc.transitioningDelegate = self
-       guard let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell else {
-            return
-        }
-        vc.selectedImage = cell.imageView.image
-        present(vc, animated: true, completion: nil)
     }
 }
-extension DashboardViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        animatorobj.flag = true
-        return animatorobj
-    }
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        animatorobj.flag = false
-        return animatorobj
-    }
-}
+
+
