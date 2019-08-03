@@ -16,7 +16,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var container: UIView!
 
     @IBAction func myFavorite(_ sender: Any) {
-        let favoriteVC = viewControllerFromStroyboard(id: "FavoriteViewController") as! FavoriteViewController
+        guard let favoriteVC = factory.makeViewController(with: .FavoriteViewController) as? FavoriteViewController else {
+            return
+        }
         present(favoriteVC, animated: true, completion: nil)
     }
     let animatorobj = animator()
@@ -32,6 +34,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     var viewHeightExtended: NSLayoutConstraint?
     let gradient = CAGradientLayer()
     var isSideMenu = false
+    let factory = AppFactory()
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -44,12 +47,12 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             }
             isSideMenu = false
         } else {
-            let sideMenuViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SideMenuViewController")
+            let sideMenuViewController = factory.makeViewController(with: .SideMenuViewController)
             addChild(sideMenuViewController)
             view.addSubview(sideMenuViewController.view)
             sideMenuViewController.didMove(toParent: self)
             sideMenuViewController.view.frame = CGRect(x: view.frame.maxX, y: 100, width: view.frame.midX, height: view.frame.maxY)
-            UIView.animate(withDuration: 3) {
+            UIView.animate(withDuration: 2) {
                 sideMenuViewController.view.frame = CGRect(x: self.view.frame.midX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
             }
             isSideMenu = true
@@ -228,7 +231,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             tapedView.more?.alpha = 0.25
             UIView.animate(withDuration: 1) {
                 tapedView.more?.alpha = 1
-                tapedView.more?.text = self.detailedText[index]//"here you are so you can go to this direction and try to find me"
+                tapedView.more?.text = self.detailedText[index]
                 tapedView.viewHeightCollapsed?.isActive = false
                 tapedView.viewHeightExtended = tapedView.heightAnchor.constraint(equalToConstant: 200)
                 tapedView.viewHeightExtended?.isActive = true
@@ -241,9 +244,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailedViewController") as? DetailedViewController else {
+        guard let vc = factory.makeViewController(with: .DetailedViewController) as? DetailedViewController else {
             return
-            
         }
         vc.transitioningDelegate = self
        guard let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell else {

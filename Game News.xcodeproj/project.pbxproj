@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3518E53B22F5976A0097FB09 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518E53A22F5976A0097FB09 /* AppFactory.swift */; };
 		35E3126022CE2E20006568E7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3125F22CE2E20006568E7 /* FavoriteViewController.swift */; };
-		35E3126322CE2F28006568E7 /* ViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3126222CE2F28006568E7 /* ViewController+Navigation.swift */; };
 		35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E338B122218E35000A555C /* DashboardInteractor.swift */; };
 		35E338B52221905E000A555C /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E338B42221905E000A555C /* DashboardModel.swift */; };
 		35E358B8220EE7230012D97E /* TopBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E358B7220EE7230012D97E /* TopBarViewController.swift */; };
@@ -36,8 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3518E53A22F5976A0097FB09 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		35E3125F22CE2E20006568E7 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		35E3126222CE2F28006568E7 /* ViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Navigation.swift"; sourceTree = "<group>"; };
 		35E338B122218E35000A555C /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
 		35E338B42221905E000A555C /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		35E358B7220EE7230012D97E /* TopBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +91,6 @@
 		35E3126122CE2EFB006568E7 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				35E3126222CE2F28006568E7 /* ViewController+Navigation.swift */,
 				35EBD33022F32183004AAD65 /* ViewController+Alert.swift */,
 			);
 			path = extensions;
@@ -180,6 +179,7 @@
 				35EB12F5220DC45800D91BD6 /* LaunchScreen.storyboard */,
 				35EB12F8220DC45800D91BD6 /* Info.plist */,
 				35E96F0822F451EB00252676 /* SideMenuViewController.swift */,
+				3518E53A22F5976A0097FB09 /* AppFactory.swift */,
 			);
 			path = "Game News";
 			sourceTree = "<group>";
@@ -332,7 +332,7 @@
 				35E96F0922F451EC00252676 /* SideMenuViewController.swift in Sources */,
 				35E585782220617F00E9A4D3 /* DetailedViewController.swift in Sources */,
 				35E5858022206B6F00E9A4D3 /* DashboardViewController+CollectionView.swift in Sources */,
-				35E3126322CE2F28006568E7 /* ViewController+Navigation.swift in Sources */,
+				3518E53B22F5976A0097FB09 /* AppFactory.swift in Sources */,
 				35E338B222218E35000A555C /* DashboardInteractor.swift in Sources */,
 				35E5FC0922BFA02B0050CCDC /* DetailedCollectionViewlayout.swift in Sources */,
 				35F1E9AD22CDEBE000A0D2DD /* Favorite.swift in Sources */,
