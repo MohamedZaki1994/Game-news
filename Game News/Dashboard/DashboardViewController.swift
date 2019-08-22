@@ -11,6 +11,7 @@ import RealmSwift
 
 class DashboardViewController: UIViewController, UICollectionViewDataSource {
 
+    @IBOutlet weak var textView: UITextView!
     let animatorobj = animator()
     var row = 0
     var lastContentOffsetX: CGFloat = 0.0
@@ -98,6 +99,24 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(didFinished), name: Notification.Name("didReceiveData"), object: nil)
         setupStackView()
         dashboardInteractor.testNotification()
+        hyperLink()
+    }
+
+    func hyperLink() {
+        textView.delegate = self
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        let attributedString = NSMutableAttributedString(string: "Settings")
+        let url = settingsUrl
+        let range = NSMakeRange(0, attributedString.length)
+        attributedString.setAttributes([.link: url], range: range)
+        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 20), range: range)
+        self.textView.attributedText = attributedString
+        self.textView.linkTextAttributes = [
+            .foregroundColor: UIColor.red,
+            .underlineStyle: NSUnderlineStyle.double.rawValue
+        ]
     }
 
     deinit {
@@ -251,3 +270,11 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
 }
 
 
+extension DashboardViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if UIApplication.shared.canOpenURL(URL) {
+            UIApplication.shared.open(URL)
+        }
+        return false
+    }
+}
