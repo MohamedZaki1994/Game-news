@@ -19,26 +19,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="175" height="140"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D24-pp-c6r">
-                        <rect key="frame" x="15" y="6" width="145" height="68"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D24-pp-c6r">
+                        <rect key="frame" x="62.5" y="6" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="7s1-RN-5el"/>
+                            <constraint firstAttribute="width" constant="50" id="GYN-h3-7ZY"/>
+                        </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QAP-Qk-esP">
-                        <rect key="frame" x="44" y="95" width="87" height="25"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QAP-Qk-esP">
+                        <rect key="frame" x="44" y="61" width="87" height="74"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="87" id="lzK-N5-1qd"/>
+                        </constraints>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.64591412334109588" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="QAP-Qk-esP" secondAttribute="trailing" constant="44" id="MeP-3o-2sp"/>
                 <constraint firstItem="D24-pp-c6r" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="6" id="XIY-ze-Ond"/>
-                <constraint firstItem="QAP-Qk-esP" firstAttribute="top" secondItem="D24-pp-c6r" secondAttribute="bottom" constant="21" id="Zbc-h4-psw"/>
-                <constraint firstAttribute="trailing" secondItem="D24-pp-c6r" secondAttribute="trailing" constant="15" id="flp-ev-0U6"/>
-                <constraint firstItem="D24-pp-c6r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="mQD-gB-nIi"/>
-                <constraint firstAttribute="bottom" secondItem="QAP-Qk-esP" secondAttribute="bottom" constant="20" id="so8-48-gEW"/>
-                <constraint firstItem="QAP-Qk-esP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="44" id="wI1-G6-0ne"/>
+                <constraint firstItem="QAP-Qk-esP" firstAttribute="top" secondItem="D24-pp-c6r" secondAttribute="bottom" constant="5" id="Zbc-h4-psw"/>
+                <constraint firstItem="QAP-Qk-esP" firstAttribute="centerX" secondItem="D24-pp-c6r" secondAttribute="centerX" id="j9A-Zi-9cH"/>
+                <constraint firstItem="D24-pp-c6r" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="jRp-tY-NbI"/>
+                <constraint firstAttribute="bottom" secondItem="QAP-Qk-esP" secondAttribute="bottom" constant="5" id="so8-48-gEW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="175" height="140"/>

@@ -186,6 +186,7 @@
                         <outlet property="collectionView" destination="0ei-y0-sTP" id="tUC-Yb-3zy"/>
                         <outlet property="navigation" destination="8io-c6-6Td" id="14z-oP-eAu"/>
                         <outlet property="pageController" destination="I1n-t2-MrJ" id="KIG-nE-lwv"/>
+                        <outlet property="scrollView" destination="BP3-5u-pg1" id="QNS-lw-WpH"/>
                         <outlet property="stackView" destination="Ovl-gm-d3c" id="TPN-ky-7yk"/>
                         <outlet property="textView" destination="az3-jH-DGz" id="HnW-wP-mIg"/>
                     </connections>
@@ -382,8 +383,8 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nel-dL-Ltj">
-                                <rect key="frame" x="15" y="80" width="345" height="557"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="15" y="80" width="345" height="567"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sn7-uS-BKj">
                                     <size key="itemSize" width="49" height="49"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -411,7 +412,7 @@
                             <constraint firstItem="nel-dL-Ltj" firstAttribute="top" secondItem="mwY-1M-hjU" secondAttribute="bottom" constant="30" id="BeK-gy-G39"/>
                             <constraint firstItem="mwY-1M-hjU" firstAttribute="top" secondItem="8v4-Mc-m5F" secondAttribute="top" constant="10" id="G7E-2d-SJi"/>
                             <constraint firstItem="8v4-Mc-m5F" firstAttribute="trailing" secondItem="mwY-1M-hjU" secondAttribute="trailing" constant="20" id="Vbo-4O-mWa"/>
-                            <constraint firstItem="8v4-Mc-m5F" firstAttribute="bottom" secondItem="nel-dL-Ltj" secondAttribute="bottom" constant="30" id="alR-5r-XVR"/>
+                            <constraint firstItem="8v4-Mc-m5F" firstAttribute="bottom" secondItem="nel-dL-Ltj" secondAttribute="bottom" constant="20" id="alR-5r-XVR"/>
                             <constraint firstItem="nel-dL-Ltj" firstAttribute="leading" secondItem="8v4-Mc-m5F" secondAttribute="leading" constant="15" id="idR-FX-pc7"/>
                             <constraint firstItem="8v4-Mc-m5F" firstAttribute="trailing" secondItem="nel-dL-Ltj" secondAttribute="trailing" constant="15" id="kGx-mh-9t2"/>
                         </constraints>

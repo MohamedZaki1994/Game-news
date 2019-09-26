@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class DashboardViewController: UIViewController, UICollectionViewDataSource {
+class DashboardViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     let animatorobj = animator()
@@ -28,7 +28,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
     let factory = AppFactory()
     var sideMenu: SideMenuViewController?
     let clearView = UIView()
-
+    let refreshControl = UIRefreshControl()
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var pageController: UIPageControl!
@@ -56,9 +57,9 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
         sideMenu = sideMenuViewController as? SideMenuViewController
         sideMenu?.delegate = self
         embed(child: sideMenuViewController)
-        sideMenuViewController.view.frame = CGRect(x: view.frame.maxX, y: 100, width: view.frame.midX, height: view.frame.maxY)
+        sideMenuViewController.view.frame = CGRect(x: view.frame.maxX, y: 100, width: view.frame.midX, height: view.frame.maxY - 100)
         UIView.animate(withDuration: 0.5) {
-            sideMenuViewController.view.frame = CGRect(x: self.view.frame.midX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
+            sideMenuViewController.view.frame = CGRect(x: self.view.frame.midX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY - 100)
 
         }
         isSideMenu = true
@@ -86,19 +87,6 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
             openSideMenu()
         }
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArray.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        guard let wrappedcell = cell as? DashboardCollectionViewCell else {
-            return cell
-        }
-        wrappedcell.title.text = "hello\(indexPath.row)"
-        wrappedcell.imageView.image = UIImage(named: imageArray[indexPath.row])
-        return wrappedcell
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +107,20 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
         setupStackView()
         dashboardInteractor.testNotification()
         hyperLink()
+        addingPullToRefresh()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        navigationController?.navigationBar.isHidden = true
+        gradientBackground()
+    }
+
+    @objc func willRefresh() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
     }
 
     @objc func dismissSideMenu() {
@@ -174,13 +176,6 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
         gradient.endPoint = CGPoint(x: 1, y: 0.5)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-        navigationController?.navigationBar.isHidden = true
-        gradientBackground()
-    }
-
     @objc func timerAction() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, animations: {
@@ -200,6 +195,12 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
             })
         }
         
+    }
+
+    func addingPullToRefresh() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(willRefresh), for: .valueChanged)
+        scrollView.addSubview(refreshControl)
     }
 
     func setupStackView() {
@@ -274,7 +275,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
                 tapedView.more?.alpha = 1
                 tapedView.more?.text = "See more"
                 tapedView.viewHeightExtended?.isActive = false
-                tapedView.viewHeightCollapsed?.isActive = true //tapedView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+                tapedView.viewHeightCollapsed?.isActive = true
                 sender.isOpened = false
                 icon.transform = CGAffineTransform(rotationAngle: CGFloat(0))
                 self.view.layoutIfNeeded()
@@ -292,15 +293,5 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
                 self.view.layoutIfNeeded()
             }
         }
-    }
-}
-
-
-extension DashboardViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        if UIApplication.shared.canOpenURL(URL) {
-            UIApplication.shared.open(URL)
-        }
-        return false
     }
 }

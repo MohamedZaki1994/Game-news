@@ -38,6 +38,7 @@ extension SideMenuViewController: UICollectionViewDataSource, UICollectionViewDe
             return cell
         }
         sideMenuCell.imageView.image = UIImage(named: "settings")
+        sideMenuCell.textView.text = "settings"
         return sideMenuCell
     }
 

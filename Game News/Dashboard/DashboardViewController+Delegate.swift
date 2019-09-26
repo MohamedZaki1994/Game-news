@@ -34,3 +34,11 @@ extension DashboardViewController: SideMenuActionProtocol {
 }
 
 
+extension DashboardViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if UIApplication.shared.canOpenURL(URL) {
+            UIApplication.shared.open(URL)
+        }
+        return false
+    }
+}

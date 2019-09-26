@@ -49,3 +49,20 @@ extension DashboardViewController: UICollectionViewDelegate {
         present(vc, animated: true, completion: nil)
     }
 }
+
+extension DashboardViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageArray.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        guard let wrappedcell = cell as? DashboardCollectionViewCell else {
+            return cell
+        }
+        wrappedcell.title.text = "hello\(indexPath.row)"
+        wrappedcell.imageView.image = UIImage(named: imageArray[indexPath.row])
+        return wrappedcell
+    }
+}
