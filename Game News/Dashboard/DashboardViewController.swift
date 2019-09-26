@@ -27,6 +27,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
     var isSideMenu = false
     let factory = AppFactory()
     var sideMenu: SideMenuViewController?
+    let clearView = UIView()
+
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var pageController: UIPageControl!
@@ -39,7 +41,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
     }
 
     func closeSideMenu() {
-        UIView.animate(withDuration: 1, animations: {
+        removeClearView()
+        UIView.animate(withDuration: 0.5, animations: {
             self.sideMenu?.view.frame = CGRect(x: self.view.frame.maxX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
         }) { [weak self] (_) in
             self?.unEmbed(child: SideMenuViewController.self)
@@ -47,15 +50,31 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
     }
 
     func openSideMenu() {
+        addingcClearView()
         let sideMenuViewController = factory.makeViewController(with: .SideMenuViewController)
         sideMenu = sideMenuViewController as? SideMenuViewController
         sideMenu?.delegate = self
         embed(child: sideMenuViewController)
         sideMenuViewController.view.frame = CGRect(x: view.frame.maxX, y: 100, width: view.frame.midX, height: view.frame.maxY)
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.5) {
             sideMenuViewController.view.frame = CGRect(x: self.view.frame.midX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
 
         }
+    }
+    func addingcClearView() {
+        clearView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(clearView)
+        clearView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        clearView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        clearView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        clearView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (dismissSideMenu))
+        clearView.addGestureRecognizer(tap)
+    }
+
+    func removeClearView() {
+        clearView.gestureRecognizers?.removeAll()
+        clearView.removeFromSuperview()
     }
 
     @IBAction func sideMenuAction(_ sender: Any) {
@@ -102,6 +121,12 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
         hyperLink()
     }
 
+    @objc func dismissSideMenu() {
+        if isSideMenu {
+            closeSideMenu()
+        }
+    }
+
     func hyperLink() {
         textView.delegate = self
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
@@ -114,7 +139,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 20), range: range)
         self.textView.attributedText = attributedString
         self.textView.linkTextAttributes = [
-            .foregroundColor: UIColor.red,
+            .foregroundColor: UIColor.blue,
             .underlineStyle: NSUnderlineStyle.double.rawValue
         ]
     }
@@ -144,7 +169,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
         gradient.anchorPoint = CGPoint.zero
         let red = UIColor.red.cgColor
         let blue = UIColor.blue.cgColor
-        gradient.colors = [blue, red]
+        gradient.colors = [red, blue]
         gradient.startPoint = CGPoint(x: 0, y: 0.5)
         gradient.endPoint = CGPoint(x: 1, y: 0.5)
     }
