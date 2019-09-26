@@ -9,17 +9,20 @@
 import UIKit
 
 protocol SideMenuActionProtocol {
-   func close()
+    func close()
+    func openSecondPage()
 }
 class SideMenuViewController: UIViewController {
     var delegate: SideMenuActionProtocol?
 
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func closeButton(_ sender: Any) {
         delegate?.close()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let nib = UINib(nibName: "SideMenuCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "SideMenuCell")
     }
 
 }
@@ -30,16 +33,17 @@ extension SideMenuViewController: UICollectionViewDataSource, UICollectionViewDe
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SideMenuCell", for: indexPath)
         guard let sideMenuCell = cell as? SideMenuCollectionViewCell else {
             return cell
         }
-        sideMenuCell.image.backgroundColor = .red
+        sideMenuCell.imageView.image = UIImage(named: "settings")
         return sideMenuCell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.close()
+        delegate?.openSecondPage()
     }
 }
 

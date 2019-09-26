@@ -46,6 +46,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
             self.sideMenu?.view.frame = CGRect(x: self.view.frame.maxX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
         }) { [weak self] (_) in
             self?.unEmbed(child: SideMenuViewController.self)
+            self?.isSideMenu = false
         }
     }
 
@@ -60,6 +61,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
             sideMenuViewController.view.frame = CGRect(x: self.view.frame.midX, y: 100, width: self.view.frame.midX, height: self.view.frame.maxY)
 
         }
+        isSideMenu = true
     }
     func addingcClearView() {
         clearView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,10 +82,8 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
     @IBAction func sideMenuAction(_ sender: Any) {
         if isSideMenu {
             closeSideMenu()
-            isSideMenu = false
         } else {
             openSideMenu()
-            isSideMenu = true
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -240,6 +240,7 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource {
         label.textColor = .red
         label.numberOfLines = 0
         label.text = "See more"
+        label.textColor = .white
         label.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
         label.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true

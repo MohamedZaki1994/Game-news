@@ -24,6 +24,13 @@ extension DashboardViewController: SideMenuActionProtocol {
     func close() {
         closeSideMenu()
     }
+
+    func openSecondPage() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else {return}
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
 }
 
 
