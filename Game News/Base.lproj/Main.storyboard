@@ -350,18 +350,31 @@
                                     <action selector="closeButton:" destination="YzW-QP-EMe" eventType="touchUpInside" id="5pB-VO-acJ"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VvD-Az-Xlf">
+                                <rect key="frame" x="47" y="101" width="281" height="181"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YzW-QP-EMe" id="j12-Ru-OFT"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VdX-3W-c2M" firstAttribute="trailing" secondItem="VvD-Az-Xlf" secondAttribute="trailing" constant="47" id="202-Ji-dq9"/>
                             <constraint firstItem="z62-uK-Khc" firstAttribute="top" secondItem="VdX-3W-c2M" secondAttribute="top" constant="30" id="4dE-Am-h0T"/>
                             <constraint firstItem="VdX-3W-c2M" firstAttribute="trailing" secondItem="z62-uK-Khc" secondAttribute="trailing" constant="40" id="5l5-sO-lah"/>
+                            <constraint firstItem="VvD-Az-Xlf" firstAttribute="leading" secondItem="VdX-3W-c2M" secondAttribute="leading" constant="47" id="AiD-Zb-h3q"/>
+                            <constraint firstItem="VvD-Az-Xlf" firstAttribute="top" secondItem="z62-uK-Khc" secondAttribute="bottom" constant="21" id="OXz-3f-T6X"/>
+                            <constraint firstItem="VdX-3W-c2M" firstAttribute="bottom" secondItem="VvD-Az-Xlf" secondAttribute="bottom" constant="385" id="P36-Lb-3TK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VdX-3W-c2M"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="VvD-Az-Xlf" id="lK9-Jo-XZW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HZf-Ml-1cQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3681" y="110"/>
+            <point key="canvasLocation" x="3680.8000000000002" y="109.29535232383809"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="Baz-c6-HCY">
