@@ -13,11 +13,13 @@ class Favorite: Object {
 
     @objc dynamic var name: String?
     @objc dynamic var text: String?
+    @objc dynamic var image: String?
 
-    convenience init(name: String, text: String) {
+    convenience init(name: String, text: String, image: String) {
         self.init()
         self.name = name
         self.text = text
+        self.image = image
     }
 
 }

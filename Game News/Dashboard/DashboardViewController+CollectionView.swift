@@ -46,6 +46,7 @@ extension DashboardViewController: UICollectionViewDelegate {
             return
         }
         vc.selectedImage = cell.imageView.image
+        vc.selectedItem = indexPath.row
         present(vc, animated: true, completion: nil)
     }
 }

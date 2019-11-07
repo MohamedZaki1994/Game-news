@@ -28,20 +28,30 @@ class DetailedViewController: UIViewController, TopBardProtocol{
     }
     var isFavorite = false
     var selectedImage: UIImage?
-
+    var selectedItem: Int?
+    var favoriteObj: Favorite?
     @IBAction func addFavoriteAction(_ sender: UIButton) {
+        let realm = try! Realm()
+        let objects = realm.objects(Favorite.self)
+        guard let favoriteObj = favoriteObj else {
+            return
+        }
         if isFavorite {
-            addFavorite.setImage(UIImage(named: "favorite"), for: .normal)
-            isFavorite = false
-            showAlert(title: "Removed from your favorite List", time: 2)
+            let deleteObject = objects.filter("image ==%@", favoriteObj.image!)
+            triggerFavorite(isFavorite: false)
+            try! realm.write {
+                realm.delete(deleteObject)
+            }
+            showAlert(title: "Removed from your favorite List", time: 1)
         } else {
-            addFavorite.setImage(UIImage(named: "favorite1"), for: .normal)
-            isFavorite = true
-            showAlert(title: "Added to your favorite List", time: 2)
+            triggerFavorite(isFavorite: true)
+            try! realm.write {
+                realm.add(favoriteObj)
+            }
+            showAlert(title: "Added to your favorite List", time: 1)
         }
     }
 
-    
     @IBAction func flicker(_ sender: Any) {
         let shadowView = UIView(frame: self.fickerLabel.frame)
         let animator = UIViewPropertyAnimator(duration: 1, dampingRatio: 0.9) {
@@ -90,14 +100,6 @@ class DetailedViewController: UIViewController, TopBardProtocol{
 //                }
 //        })
 //        Realm.Configuration.defaultConfiguration = config
-        let realm = try! Realm()
-        let object = realm.objects(Favorite.self)
-        try! realm.write {
-            realm.delete(object)
-        }
-        try! realm.write {
-            realm.add(Favorite(name: "GW2", text: "Best"))
-        }
     }
 
     override func viewDidLoad() {
@@ -115,6 +117,19 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         UIView.animate(withDuration: 8.5) {
             self.arrowImage.transform = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2) * 0.99)
         }
+        let realm = try! Realm()
+        let objects = realm.objects(Favorite.self)
+        favoriteObj = Favorite(name: "GW2", text: "Best", image: String(selectedItem!))
+        let selectedObj = objects.filter("image ==%@", favoriteObj?.image)
+        if !selectedObj.isEmpty {
+            triggerFavorite(isFavorite: true)
+        }
+    }
+
+    func triggerFavorite(isFavorite: Bool) {
+        let imageName = isFavorite ? "favorite1" : "favorite"
+        addFavorite.setImage(UIImage(named: imageName), for: .normal)
+        self.isFavorite = isFavorite
     }
 
     override func viewDidAppear(_ animated: Bool) {

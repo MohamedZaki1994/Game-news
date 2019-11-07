@@ -356,6 +356,9 @@
                                     <outlet property="delegate" destination="YzW-QP-EMe" id="j12-Ru-OFT"/>
                                 </connections>
                             </mapView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ixy-U3-Adr">
+                                <rect key="frame" x="123" y="352" width="150" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -363,13 +366,18 @@
                             <constraint firstItem="z62-uK-Khc" firstAttribute="top" secondItem="VdX-3W-c2M" secondAttribute="top" constant="30" id="4dE-Am-h0T"/>
                             <constraint firstItem="VdX-3W-c2M" firstAttribute="trailing" secondItem="z62-uK-Khc" secondAttribute="trailing" constant="40" id="5l5-sO-lah"/>
                             <constraint firstItem="VvD-Az-Xlf" firstAttribute="leading" secondItem="VdX-3W-c2M" secondAttribute="leading" constant="47" id="AiD-Zb-h3q"/>
+                            <constraint firstItem="Ixy-U3-Adr" firstAttribute="top" secondItem="VvD-Az-Xlf" secondAttribute="bottom" constant="70" id="Hzr-W5-hj0"/>
                             <constraint firstItem="VvD-Az-Xlf" firstAttribute="top" secondItem="z62-uK-Khc" secondAttribute="bottom" constant="21" id="OXz-3f-T6X"/>
                             <constraint firstItem="VdX-3W-c2M" firstAttribute="bottom" secondItem="VvD-Az-Xlf" secondAttribute="bottom" constant="385" id="P36-Lb-3TK"/>
+                            <constraint firstItem="Ixy-U3-Adr" firstAttribute="leading" secondItem="GUD-eR-fpM" secondAttribute="leadingMargin" constant="107" id="UH3-gE-gtd"/>
+                            <constraint firstItem="VdX-3W-c2M" firstAttribute="bottom" secondItem="Ixy-U3-Adr" secondAttribute="bottom" constant="313" id="W81-En-OcL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ixy-U3-Adr" secondAttribute="trailing" constant="86" id="tdy-Ac-gUr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VdX-3W-c2M"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="VvD-Az-Xlf" id="lK9-Jo-XZW"/>
+                        <outlet property="progressView" destination="Ixy-U3-Adr" id="eUp-f9-vhL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HZf-Ml-1cQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
