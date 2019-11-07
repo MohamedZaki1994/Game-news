@@ -29,6 +29,7 @@ class DetailedViewController: UIViewController, TopBardProtocol{
     var isFavorite = false
     var selectedImage: UIImage?
     var selectedItem: Int?
+    var gameDetails: Game?
     var favoriteObj: Favorite?
     @IBAction func addFavoriteAction(_ sender: UIButton) {
         let realm = try! Realm()
@@ -119,7 +120,7 @@ class DetailedViewController: UIViewController, TopBardProtocol{
         }
         let realm = try! Realm()
         let objects = realm.objects(Favorite.self)
-        favoriteObj = Favorite(name: "GW2", text: "Best", image: String(selectedItem!))
+        favoriteObj = Favorite(name: gameDetails?.name ?? "", text: gameDetails?.text ?? "", image: String(selectedItem!))
         let selectedObj = objects.filter("image ==%@", favoriteObj?.image)
         if !selectedObj.isEmpty {
             triggerFavorite(isFavorite: true)

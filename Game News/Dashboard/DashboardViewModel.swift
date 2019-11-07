@@ -9,5 +9,5 @@
 import Foundation
 
 class DashboardViewModel {
-    var games: [Games]?
+    var games: [Game]?
 }

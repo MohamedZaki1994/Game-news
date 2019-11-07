@@ -9,9 +9,9 @@
 import Foundation
 class DashboardModel: Codable{
     
-    var games: [Games]?
+    var games: [Game]?
 }
-class Games: Codable {
+class Game: Codable {
     var name: String?
     var text: String?
 }

@@ -47,6 +47,7 @@ extension DashboardViewController: UICollectionViewDelegate {
         }
         vc.selectedImage = cell.imageView.image
         vc.selectedItem = indexPath.row
+        vc.gameDetails = viewModel.games?[indexPath.row]
         present(vc, animated: true, completion: nil)
     }
 }
