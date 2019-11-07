@@ -90,8 +90,9 @@ class DashboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dashboardInteractor.getData { (model) in
-            guard let games = model.games else {
+        dashboardInteractor.getData { (viewModel) in
+            self.viewModel = viewModel
+            guard let games = viewModel.games else {
                 return
             }
             imageArray = games.compactMap({ game in
